@@ -99,6 +99,7 @@ public class HomeAdapter extends RecyclerView.Adapter{
                 return new WallLiveHolder(walllive);
 
             case CHINALIVE:
+
                 break;
             case INTERACTIVE:
                 break;
