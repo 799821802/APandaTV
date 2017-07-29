@@ -102,6 +102,7 @@ public class HomeAdapter extends RecyclerView.Adapter{
 
                 break;
             case INTERACTIVE:
+
                 break;
             case CCTV:
                 break;
