@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">APandaTV</string>
+    <string name="app_name">熊猫频道</string>
+    <string name="home_page">首页</string>
+    <string name="panda_live">熊猫直播</string>
+    <string name="rolling_video">熊猫文化</string>
+    <string name="panda_broadcast">熊猫观察</string>
+    <string name="live_china">直播中国</string>
 </resources>
