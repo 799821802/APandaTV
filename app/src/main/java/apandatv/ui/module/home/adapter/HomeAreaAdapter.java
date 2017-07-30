@@ -56,6 +56,7 @@ public class HomeAreaAdapter extends Adapter {
         ImageView img;
         TextView titleTv;
         public Holder(View itemView) {
+
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.areaImg);
             titleTv = (TextView) itemView.findViewById(R.id.areaTitle);
