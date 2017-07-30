@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:text="长城直播"
+            android:text="光影中国"
             android:textSize="16dp" />
 
         <TextView
@@ -24,7 +24,7 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/home_walllive_show_recycle"
+        android:id="@+id/home_guangyingchina_recycle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp">

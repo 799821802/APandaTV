@@ -10,7 +10,7 @@ import apandatv.net.callback.MyNetCallback;
  * Created by lenovo on 2017/7/27.
  */
 
-public class HomePresenter implements HomeContract.Presenter  {
+public class HomePresenter implements HomeContract.Presenter{
     private HomeContract.View homeView;
     private IPandaHomeModel homeModel;
     public HomePresenter(HomeContract.View homeView){

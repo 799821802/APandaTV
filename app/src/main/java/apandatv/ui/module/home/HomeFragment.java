@@ -83,6 +83,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
         lists.add(pandaHome.getData().getPandaeye());
         lists.add(pandaHome.getData().getPandalive());
         lists.add(pandaHome.getData().getWalllive());
+        lists.add(pandaHome.getData().getChinalive());
+        lists.add(pandaHome.getData().getInteractive());
+        lists.add(pandaHome.getData().getCctv());
+        lists.add(pandaHome.getData().getList().get(0));
         homeAdapter.notifyDataSetChanged();
         homeXrecyclerview.refreshComplete();
     }
@@ -95,7 +99,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
     @Override
     public void playVideo() {
 
-//        Intent intent = new Intent();
     }
 
     @Override

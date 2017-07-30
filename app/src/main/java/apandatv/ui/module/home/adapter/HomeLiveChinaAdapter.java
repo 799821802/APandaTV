@@ -19,12 +19,12 @@ import apandatv.model.entity.PandaHome;
  * Created by lenovo on 2017/7/28.
  */
 
-public class HomeWallLiveAdapter extends RecyclerView.Adapter {
+public class HomeLiveChinaAdapter extends RecyclerView.Adapter {
 
     private Context context;
-    private List<PandaHome.DataBean.WallliveBean.ListBeanX> list;
+    private List<PandaHome.DataBean.ChinaliveBean.ListBeanXX> list;
 
-    public HomeWallLiveAdapter(Context context, List<PandaHome.DataBean.WallliveBean.ListBeanX> list) {
+    public HomeLiveChinaAdapter(Context context, List<PandaHome.DataBean.ChinaliveBean.ListBeanXX> list) {
         this.context = context;
         this.list = list;
     }
@@ -47,6 +47,7 @@ public class HomeWallLiveAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View v) {
 
+
             }
         });
     }
@@ -61,12 +62,12 @@ public class HomeWallLiveAdapter extends RecyclerView.Adapter {
         private ImageView imag;
         private TextView textView;
 
-
         public ViewHolder(View itemView) {
             super(itemView);
 
             imag = (ImageView) itemView.findViewById(R.id.live_show_image);
             textView = (TextView) itemView.findViewById(R.id.live_show_text);
+
         }
     }
 }

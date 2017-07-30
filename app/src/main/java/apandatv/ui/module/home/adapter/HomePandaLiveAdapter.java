@@ -42,17 +42,9 @@ public class HomePandaLiveAdapter extends RecyclerView.Adapter {
         ViewHolder holder1 = (ViewHolder) holder;
         holder1.textView.setText(list.get(position).getTitle());
         IPandaHomeModel.iHttp.loadImage(list.get(position).getImage(),holder1.imag);
-//        int number=Integer.parseInt(list.get(position).getOrder());
-//        if(number==1||number==4||number==7) {
-//            ViewGroup.LayoutParams lp=my_view.yuan.getLayoutParams();
-//            lp.height=40;
-//            lp.width=40;
-//            my_view.yuan.setLayoutParams(lp);
-//        }
         holder1.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
             }
         });
@@ -67,14 +59,12 @@ public class HomePandaLiveAdapter extends RecyclerView.Adapter {
 
         private ImageView imag;
         private TextView textView;
-        private ImageView  yuan;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             imag = (ImageView) itemView.findViewById(R.id.live_show_image);
             textView = (TextView) itemView.findViewById(R.id.live_show_text);
-            yuan = (ImageView) itemView.findViewById(R.id.live_red_yuan);
         }
     }
 }

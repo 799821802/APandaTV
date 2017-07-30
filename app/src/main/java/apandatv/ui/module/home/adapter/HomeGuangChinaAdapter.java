@@ -12,58 +12,63 @@ import com.jiyun.apandatv.R;
 
 import java.util.List;
 
-import apandatv.model.entity.HomePandaeyeBean;
+import apandatv.model.entity.HomeGuangChinaBean;
 import apandatv.net.HttpFactroy;
 
 /**
  * Created by lenovo on 2017/7/28.
  */
 
-public class HomePandaeyeAdapter extends RecyclerView.Adapter {
+public class HomeGuangChinaAdapter extends RecyclerView.Adapter {
 
     private Context context;
-    private List<HomePandaeyeBean.ListBean> look_down_array;
+    private List<HomeGuangChinaBean.ListBean> listbean;
 
-    public HomePandaeyeAdapter(Context context, List<HomePandaeyeBean.ListBean> look_down_array) {
+    public HomeGuangChinaAdapter(Context context,List<HomeGuangChinaBean.ListBean> listbean) {
         this.context = context;
-        this.look_down_array = look_down_array;
+        this.listbean = listbean;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.home_pandaeye_item, null);
-        return new My_View(view);
+
+
+        return new MyHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        My_View my_view = (My_View) holder;
+        MyHolder myHolder = (MyHolder) holder;
 
-        my_view.title.setText(look_down_array.get(position).getTitle());
-        my_view.data.setText(look_down_array.get(position).getDaytime());
-        my_view.time.setText(look_down_array.get(position).getVideoLength());
-        HttpFactroy.create().loadImage(look_down_array.get(position).getImage(),my_view.imageView);
+        myHolder.title.setText(listbean.get(position).getTitle());
+        myHolder.data.setText(listbean.get(position).getDaytime());
+        myHolder.time.setText(listbean.get(position).getVideoLength());
+        HttpFactroy.create().loadImage(listbean.get(position).getImage(),myHolder.imageView);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return look_down_array.size();
+        return listbean.size();
     }
 
-    class My_View extends RecyclerView.ViewHolder {
+    class MyHolder extends RecyclerView.ViewHolder {
         private ImageView imageView;
         private TextView title, data, time;
 
-        public My_View(View itemView) {
+        public MyHolder(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.look_down_image);
 
             title = (TextView) itemView.findViewById(R.id.look_down_title);
             data = (TextView) itemView.findViewById(R.id.look_down_data);
             time = (TextView) itemView.findViewById(R.id.movie_time);
+
+
         }
     }
 }

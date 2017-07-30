@@ -1,7 +1,6 @@
 package apandatv.ui.module.home.adapter;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,16 +11,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jiyun.apandatv.R;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import apandatv.model.biz.IPandaHomeModel;
+import apandatv.model.entity.HomeCctvBean;
+import apandatv.model.entity.HomeGuangChinaBean;
 import apandatv.model.entity.HomePandaeyeBean;
 import apandatv.model.entity.PandaHome;
 import apandatv.net.HttpFactroy;
 import apandatv.net.callback.MyNetCallback;
 import apandatv.utils.LogUtils;
+import apandatv.widget.view.MyLoader;
 
 /**
  * Created by lenovo on 2017/7/28.
@@ -32,17 +37,19 @@ public class HomeAdapter extends RecyclerView.Adapter{
     private List<Object> datas;
     private LayoutInflater inflater;
     public static final int ITEMCOUNT = 9;//加载9种不同类型的item
-    public static final int BIGIMG = 0;//代表轮播图
-    public static final int AREA = 1;//代表轮播图
-    public static final int PANDAEYE = 2;//代表轮播图
-    public static final int PANDALIVE = 3;
-    public static final int WALLLIVE = 4;//代表轮播图
-    public static final int CHINALIVE = 5;//代表轮播图
-    public static final int INTERACTIVE = 6;//代表轮播图
-    public static final int CCTV = 7;//代表轮播图
-    public static final int LIST = 8;//代表轮播图
+    public static final int BIGIMG = 0;//轮播图
+    public static final int AREA = 1;//精彩推荐
+    public static final int PANDAEYE = 2;//熊猫观察
+    public static final int PANDALIVE = 3;//熊猫直播
+    public static final int WALLLIVE = 4;//长城直播
+    public static final int CHINALIVE = 5;//直播中国
+    public static final int INTERACTIVE = 6;//特别策划
+    public static final int CCTV = 7;//CCTV
+    public static final int LIST = 8;//光影中国
     private Context context;
     private List<HomePandaeyeBean.ListBean> Look_Down_Array = new ArrayList();
+    List<HomeCctvBean.ListBean> cctv_list = new ArrayList();
+    private List<HomeGuangChinaBean.ListBean> guangyinglist = new ArrayList<>();
     public HomeAdapter(Context context, List<Object> datas) {
         this.context = context;
         this.datas = datas;
@@ -100,14 +107,24 @@ public class HomeAdapter extends RecyclerView.Adapter{
 
             case CHINALIVE:
 
-                break;
+                View livechina = inflater.inflate(R.layout.home_livechina,null);
+                return new LiveChinaHolder(livechina);
+
             case INTERACTIVE:
 
-                break;
+                View interactive = inflater.inflate(R.layout.home_interactive,null);
+                return new InteractiveHolder(interactive);
+
             case CCTV:
-                break;
+
+                View cctv = inflater.inflate(R.layout.home_cctv,null);
+                return new CCTVHolder(cctv);
+
             case LIST:
-                break;
+
+                View list = inflater.inflate(R.layout.home_guangyingchina,null);
+                return new ChinalistHolder(list);
+
         }
         return null;
     }
@@ -144,26 +161,59 @@ public class HomeAdapter extends RecyclerView.Adapter{
                 PandaHome.DataBean.WallliveBean wallliveBean = (PandaHome.DataBean.WallliveBean) datas.get(position);
                 loadWallLive(wallLiveHolder,wallliveBean);
                 break;
+            case CHINALIVE:
 
+                LiveChinaHolder liveChinaHolder = (LiveChinaHolder) holder;
+                PandaHome.DataBean.ChinaliveBean chinaliveBean = (PandaHome.DataBean.ChinaliveBean) datas.get(position);
+                loadLiveChina(liveChinaHolder,chinaliveBean);
+                break;
+
+            case INTERACTIVE:
+
+                InteractiveHolder interactiveHolder = (InteractiveHolder) holder;
+                PandaHome.DataBean.InteractiveBean interactiveBean = (PandaHome.DataBean.InteractiveBean) datas.get(position);
+                LoadInteractive(interactiveHolder,interactiveBean);
+                break;
+
+            case CCTV:
+
+                CCTVHolder cctvHolder = (CCTVHolder) holder;
+                PandaHome.DataBean.CctvBean cctvBean = (PandaHome.DataBean.CctvBean) datas.get(position);
+                LoadCCTV(cctvHolder,cctvBean);
+
+                break;
+
+            case LIST:
+
+                ChinalistHolder chinalistHolder = (ChinalistHolder) holder;
+                PandaHome.DataBean.ListBeanXXX listBeanXXXes = (PandaHome.DataBean.ListBeanXXX) datas.get(position);
+                LoadGuangyingChina(chinalistHolder,listBeanXXXes);
+                break;
         }
     }
 
     //viewpager
     private void loadBigImg(BigimgHolder holder, List<PandaHome.DataBean.BigImgBean> bigImgs){
-        ViewPager viewPager = holder.banner;
-        List<ImageView> imgs = new ArrayList<>();
+        Banner banner = holder.banner;
+        List<String> imgs = new ArrayList<>();
+        List<String> titles = new ArrayList<>();
         for (PandaHome.DataBean.BigImgBean imgBean : bigImgs){
-            ImageView imageView = new ImageView(context);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            ViewGroup.LayoutParams params =
-                    new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.MATCH_PARENT);
-            imageView.setLayoutParams(params);
-            HttpFactroy.create().loadImage(imgBean.getImage(),imageView);
-            imgs.add(imageView);
-        }
-        viewPager.setAdapter(new HomeBigImgAdapter(imgs));
 
+            imgs.add(imgBean.getImage());
+            LogUtils.e("TAG",imgBean.getTitle());
+            titles.add(imgBean.getTitle());
+        }
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
+        banner.setBannerAnimation(Transformer.Accordion);
+        banner.setImageLoader(new MyLoader());
+        banner.setImages(imgs);
+        banner.setBannerTitles(titles);
+        //设置自动轮播，默认为true
+        banner.isAutoPlay(true);
+        //设置轮播时间
+        banner.setDelayTime(2000);
+        banner.setIndicatorGravity(BannerConfig.RIGHT);
+        banner.start();
     }
 
     //精彩推荐
@@ -232,6 +282,74 @@ public class HomeAdapter extends RecyclerView.Adapter{
 
     }
 
+    //直播中国
+    private void loadLiveChina(LiveChinaHolder holder, PandaHome.DataBean.ChinaliveBean chinaliveBean){
+
+        RecyclerView recyclerView = holder.live_show_recy;
+        recyclerView.setLayoutManager( new GridLayoutManager(context, 3));
+        HomeLiveChinaAdapter adapter = new HomeLiveChinaAdapter(context, chinaliveBean.getList());
+        LogUtils.e("TAG",chinaliveBean.getList().toString());
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+    }
+
+    //特别策划
+    private void LoadInteractive(InteractiveHolder holder,PandaHome.DataBean.InteractiveBean interactiveBean){
+
+       ImageView interactiveimg = holder.img;
+        TextView title = holder.title;
+        List<PandaHome.DataBean.InteractiveBean.InteractiveoneBean> interactiveone = interactiveBean.getInteractiveone();
+        for (int i=0;i<interactiveone.size();i++){
+           String img = interactiveone.get(i).getImage();
+            IPandaHomeModel.iHttp.loadImage(img,interactiveimg);
+            title.setText(interactiveone.get(i).getTitle());
+        }
+    }
+
+    //cctv
+    private void LoadCCTV(CCTVHolder holder,PandaHome.DataBean.CctvBean cctvBean){
+
+        RecyclerView recyclerView =  holder.live_show_recy;
+        recyclerView.setLayoutManager(new GridLayoutManager(context,2));
+        final HomeCctvAdapter adapter = new HomeCctvAdapter(context,cctv_list);
+        recyclerView.setAdapter(adapter);
+        IPandaHomeModel.iHttp.get(cctvBean.getListurl(), null, new MyNetCallback<HomeCctvBean>() {
+            @Override
+            public void onSuccess(HomeCctvBean homeCctvBean) {
+
+                cctv_list.clear();
+                cctv_list.addAll(homeCctvBean.getList());
+                adapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onError(int errorCode, String errorMsg) {
+
+            }
+        });
+    }
+    //光影中国
+    private void LoadGuangyingChina(ChinalistHolder chinalistHolder,PandaHome.DataBean.ListBeanXXX list){
+
+        RecyclerView recyclerView = chinalistHolder.recyclerView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        final HomeGuangChinaAdapter adapter = new HomeGuangChinaAdapter(context,guangyinglist);
+        recyclerView.setAdapter(adapter);
+
+        IPandaHomeModel.iHttp.get(list.getListUrl(), null, new MyNetCallback<HomeGuangChinaBean>() {
+                @Override
+                public void onSuccess(HomeGuangChinaBean homeGuangChinaBean) {
+                    guangyinglist.clear();
+                    guangyinglist.addAll(homeGuangChinaBean.getList());
+                    adapter.notifyDataSetChanged();
+                }
+                @Override
+                public void onError(int errorCode, String errorMsg) {
+
+                }
+            });
+    }
+
     @Override
     public int getItemCount() {
         return datas.size();
@@ -239,10 +357,11 @@ public class HomeAdapter extends RecyclerView.Adapter{
 
     //viewpager
     class BigimgHolder extends RecyclerView.ViewHolder {
-        ViewPager banner;
+        Banner banner;
         public BigimgHolder(View itemView) {
             super(itemView);
-            banner = (ViewPager) itemView.findViewById(R.id.home_viewpager);
+            banner = (Banner) itemView.findViewById(R.id.home_viewpager);
+
         }
     }
     //精彩推荐
@@ -287,7 +406,49 @@ public class HomeAdapter extends RecyclerView.Adapter{
 
         public WallLiveHolder(View itemView) {
             super(itemView);
-            live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_live_show_recycle);
+            live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_walllive_show_recycle);
+        }
+    }
+    //直播中国
+    class LiveChinaHolder extends RecyclerView.ViewHolder{
+
+        private RecyclerView live_show_recy;
+
+        public LiveChinaHolder(View itemView) {
+            super(itemView);
+            live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_livechina_show_recycle);
+        }
+    }
+
+    //特别策划
+    class InteractiveHolder extends RecyclerView.ViewHolder{
+
+        private ImageView img;
+        private TextView title;
+        public InteractiveHolder(View itemView) {
+            super(itemView);
+            img = (ImageView) itemView.findViewById(R.id.home_interactive_img);
+            title = (TextView) itemView.findViewById(R.id.home_interactive_title);
+        }
+    }
+    //CCTV
+    class CCTVHolder extends RecyclerView.ViewHolder{
+
+        private RecyclerView live_show_recy;
+
+        public CCTVHolder(View itemView) {
+            super(itemView);
+            live_show_recy = (RecyclerView) itemView.findViewById(R.id.home_cctv_show_recycle);
+        }
+    }
+    //光影中国
+    class ChinalistHolder extends RecyclerView.ViewHolder{
+
+        private RecyclerView recyclerView;
+        public ChinalistHolder(View itemView) {
+            super(itemView);
+
+            recyclerView = (RecyclerView) itemView.findViewById(R.id.home_guangyingchina_recycle);
         }
     }
 }
