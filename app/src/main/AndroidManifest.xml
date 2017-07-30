@@ -9,17 +9,18 @@
     <application
         android:name="apandatv.app.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_ipnda"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="apandatv.activity.MainActivity">
+        <activity android:name="apandatv.ui.module.version.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="apandatv.activity.MainActivity"/>
        <activity android:name="apandatv.base.BaseActivity"/>
     </application>
 

@@ -1,6 +1,7 @@
 package apandatv.model.biz;
 
 import apandatv.model.entity.PandaHome;
+import apandatv.model.entity.UpDateLoading;
 import apandatv.net.callback.MyNetCallback;
 
 /**
@@ -11,4 +12,5 @@ import apandatv.net.callback.MyNetCallback;
 public interface IPandaHomeModel extends BaseModel {
 
     void loadHomeList(MyNetCallback<PandaHome> callback);
+    void loadVersion(MyNetCallback<UpDateLoading> callback);
 }
