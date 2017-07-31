@@ -17,6 +17,17 @@ public class Urls {
     public static final String PANDALIVE_Live_Live = BASEURL + "PAGE14501769230331752/index.json";
     //  熊猫直播 首页地址
     public static final String PANDALIVE = "http://www.ipanda.com/kehuduan/PAGE14501772263221982/index.json";
+    //    熊猫直播 多视角 直播
+    public static final String PANDALIVEMore = "http://www.ipanda.com/kehuduan/PAGE14501769230331752/PAGE14501787896813312/index.json";
+    // 熊猫 直播  边看边聊
+    public static final String PANDALIVELook = "http://newcomment.cntv.cn/comment/list?app=ipandaApp&itemid=zhiboye_chat&nature=1&page=1";
+    // 熊猫 直播  其他页面
+    public static final String PANDALIVEOTHR = " http://api.cntv.cn/video/videolistById?";
+    // 熊猫播报 页面
+    public static final String PANDAEYE = "http://www.ipanda.com/kehuduan/PAGE14503485387528442/index.json";
+
+//    http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda
+public static final String PANDAEYEXrecy = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda";
 
     //列表
     public static final String PAGELIST = BASEURL + "PAGE14501786751053212/index.json";

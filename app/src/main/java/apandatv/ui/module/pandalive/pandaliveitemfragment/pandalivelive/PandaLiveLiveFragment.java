@@ -16,8 +16,6 @@ import apandatv.app.App;
 import apandatv.base.BaseFragment;
 import apandatv.model.entity.PandaLiveLive;
 import apandatv.ui.module.pandalive.pandaliveadapter.PandaLiveLiveTablayAdapter;
-import apandatv.ui.module.pandalive.pandaliveitemfragment.pandalivelive.pandalivelivelook.LookTalkFragment;
-import apandatv.ui.module.pandalive.pandaliveitemfragment.pandalivelive.pandalivelivemorelive.MoreEyeLiveFragment;
 import apandatv.widget.view.MyViewViewPage;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -56,10 +54,9 @@ public class PandaLiveLiveFragment extends BaseFragment implements PandaLiveLive
     ImageView liveCenterBlueImgUp;
 
     private PandaLiveLiveContract.Presenter presenter;
-    private ArrayList<Fragment> arrfragment = new ArrayList<>();
     private ArrayList<String>  tablearray = new ArrayList<>();
 
-
+    ArrayList<Fragment> fragment;
     @Override
     protected int getLayoutId() {
         new PandaLiveLivePresenter(this);
@@ -68,23 +65,13 @@ public class PandaLiveLiveFragment extends BaseFragment implements PandaLiveLive
 
     @Override
     protected void init(View view) {
-
-        LookTalkFragment lookTalkFragment = new LookTalkFragment();
-        MoreEyeLiveFragment moreEyeLiveFragment = new MoreEyeLiveFragment();
-        arrfragment.add(moreEyeLiveFragment);
-        arrfragment.add(lookTalkFragment);
-
-
-
-
-
+        fragment = presenter.getFragment();
 
     }
 
     @Override
     protected void loadData() {
         presenter.start();
-
     }
 
     @Override
@@ -108,18 +95,15 @@ public class PandaLiveLiveFragment extends BaseFragment implements PandaLiveLive
         List<PandaLiveLive.LiveBean> live = liveLive.getLive();
 
         Glide.with(App.context).load(live.get(0).getImage()).into(liveTopImg);
-
         radioTitle.setText(live.get(0).getTitle());
-
         tvVisibility.setText(live.get(0).getBrief());
 
         tablearray.add(liveLive.getBookmark().getMultiple().get(0).getTitle());
         tablearray.add(liveLive.getBookmark().getWatchTalk().get(0).getTitle());
 
-
-        PandaLiveLiveTablayAdapter pandaLiveLiveTablayAdapter = new PandaLiveLiveTablayAdapter(getFragmentManager(),arrfragment,tablearray);
-
+        PandaLiveLiveTablayAdapter pandaLiveLiveTablayAdapter = new PandaLiveLiveTablayAdapter(getChildFragmentManager(),fragment,tablearray);
         liveBottomViewpager.setAdapter(pandaLiveLiveTablayAdapter);
+        liveBottomViewpager.setOffscreenPageLimit(2);
         liveCenterTablayout.setupWithViewPager(liveBottomViewpager);
         liveCenterTablayout.setTabMode(TabLayout.MODE_FIXED);
 

@@ -10,6 +10,7 @@ import apandatv.model.entity.PandaLiveTextBean;
 
 /**
  * Created by Administrator on 2017/7/29.
+ *
  */
 
 public class PandaLiveContrrat {
@@ -25,12 +26,7 @@ public class PandaLiveContrrat {
     }
 
     interface Presenter extends BasePresenter {
-
             ArrayList<Fragment> getFragment();
-
-
-
-
 
     }
 
