@@ -13,6 +13,7 @@ import apandatv.base.BaseActivity;
 import apandatv.ui.module.home.HomeFragment;
 import apandatv.ui.module.home.HomePresenter;
 import apandatv.ui.module.livechina.LiveChinaFragment;
+import apandatv.ui.module.livechina.LiveChinaPresenter;
 import apandatv.ui.module.pandaculture.PandaCultureFragment;
 import apandatv.ui.module.pandaeye.PandaEyeFragment;
 import apandatv.ui.module.pandalive.PandaLiveFragment;
@@ -126,6 +127,7 @@ public class MainActivity extends BaseActivity {
                 homeRollVideo.setBackgroundColor(getResources().getColor(R.color.white));
                 homePandaBroadcast.setBackgroundColor(getResources().getColor(R.color.white));
                 homeLiveChina.setBackgroundColor(getResources().getColor(R.color.hui));
+
                 break;
         }
     }

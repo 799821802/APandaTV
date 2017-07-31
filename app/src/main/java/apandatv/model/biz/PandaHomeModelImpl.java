@@ -23,4 +23,5 @@ public class PandaHomeModelImpl implements IPandaHomeModel {
     public void loadVersion(MyNetCallback<UpDateLoading> callback) {
         iHttp.get(Urls.UPDATE,null,callback);
     }
+
 }

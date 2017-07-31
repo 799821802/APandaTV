@@ -13,4 +13,5 @@ public interface IPandaHomeModel extends BaseModel {
 
     void loadHomeList(MyNetCallback<PandaHome> callback);
     void loadVersion(MyNetCallback<UpDateLoading> callback);
+
 }
