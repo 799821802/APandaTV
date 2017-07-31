@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:background="@color/radio_black"
+            android:id="@+id/live_top_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+        <ImageView
+            android:layout_centerInParent="true"
+            android:background="@mipmap/ic_play_arrow_white_24dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/radio_black"
+            android:text="[精彩直播]"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/radio_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:text="简介"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:button="@null"
+            android:id="@+id/live_center_blue_img_down"
+            android:background="@mipmap/live_china_detail_down"
+            android:layout_centerHorizontal="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <ImageView
+            android:visibility="gone"
+            android:button="@null"
+            android:id="@+id/live_center_blue_img_up"
+            android:background="@mipmap/live_china_detail_up"
+            android:layout_centerHorizontal="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+
+
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:background="@color/radio_hui"
+                android:layout_width="match_parent"
+                android:layout_height="2dp" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:textColor="@color/radio_black"
+                    android:id="@+id/tv_visibility"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content" />
+
+
+            <android.support.design.widget.TabLayout
+
+                android:id="@+id/live_center_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.design.widget.TabLayout>
+
+            <apandatv.widget.view.MyViewViewPage
+                android:id="@+id/live_bottom_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+</apandatv.widget.view.MyViewViewPage>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>
