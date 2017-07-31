@@ -39,6 +39,7 @@ public class NetWorkUtils {
     * 判断WIFI是否打开
     */
     public static boolean isWifiEnabled(Context context) {
+
         ConnectivityManager mgrConn = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         TelephonyManager mgrTel = (TelephonyManager) context
