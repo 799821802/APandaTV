@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import apandatv.base.BaseFragment;
 import apandatv.model.entity.PandaLiveTextBean;
 import apandatv.ui.module.pandalive.pandaliveadapter.PandaLiveTablayadapter;
-import apandatv.ui.module.pandalive.pandaliveitemfragment.pandalivelive.PandaLiveLiveFragment;
-import apandatv.ui.module.pandalive.pandaliveitemfragment.pandaliveother.PandaliveOtherFragment;
 import apandatv.widget.view.MyViewViewPage;
 import butterknife.BindView;
 import butterknife.Unbinder;
@@ -33,9 +31,7 @@ public class PandaLiveFragment extends BaseFragment implements PandaLiveContrrat
     private PandaLiveContrrat.Presenter presenter;
 
     private ArrayList<PandaLiveTextBean.TablistBean> aray_table = new ArrayList();
-    private ArrayList<Fragment> arraylist_fragment;
-    private PandaLiveLiveFragment pandaLiveLiveFragment;
-    private PandaliveOtherFragment pandaliveOtherFragment;
+
     private PandaLiveTablayadapter pan_daapter;
     ArrayList<Fragment> fragment;
 
@@ -49,7 +45,6 @@ public class PandaLiveFragment extends BaseFragment implements PandaLiveContrrat
 
     @Override
     protected void init(View view) {
-//        getPandaFragment();
 
         fragment = presenter.getFragment();
 
@@ -86,8 +81,12 @@ public class PandaLiveFragment extends BaseFragment implements PandaLiveContrrat
 
         pan_daapter = new PandaLiveTablayadapter(getFragmentManager(), fragment, aray_table);
         liveFragmentViewpager.setAdapter(pan_daapter);
+        liveFragmentViewpager.setOffscreenPageLimit(9);
         liveFragmentTablayout.setupWithViewPager(liveFragmentViewpager);
         liveFragmentTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+
+
 
     }
 

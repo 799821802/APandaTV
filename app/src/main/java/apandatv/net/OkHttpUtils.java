@@ -215,6 +215,10 @@ public class OkHttpUtils implements IHttp {
         Type[] actualTypeArguments = ((ParameterizedType) types[0]).getActualTypeArguments();
         Type type = actualTypeArguments[0];
         T t = gson.fromJson(jsonData,type);
+
+//        ACache aCache = ACache.get(App.context);
+//        aCache.put(t.getClass().getSimpleName(), (Serializable) t);
+
         return t;
     }
 }

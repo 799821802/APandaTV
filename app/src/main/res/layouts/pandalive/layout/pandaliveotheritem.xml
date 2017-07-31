@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/radio_bai"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <RelativeLayout
+            android:layout_width="160dp"
+            android:layout_height="100dp">
+
+            <ImageView
+
+                android:layout_centerVertical="true"
+                android:layout_marginTop="1dp"
+                android:id="@+id/item_pandalive_pullto_img"
+                android:layout_width="300dp"
+                android:layout_height="150dp" />
+
+            <RelativeLayout
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:layout_width="100dp"
+                android:layout_height="20dp">
+
+
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/img_blackwhite"
+                android:background="@drawable/play"
+                android:layout_width="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="15dp" />
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/item_pandalive_pullto_video_time"
+                android:textSize="12dp"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/radio_bai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:ellipsize="end"
+                android:lines="2"
+                android:id="@+id/item_pandalive_pullto_title"
+                android:textColor="@color/radio_black"
+                android:layout_marginTop="5dp"
+                android:text="《精彩一刻》"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:ellipsize="end"
+                android:lines="2"
+                android:id="@+id/item_pandalive_pullto_time"
+                android:layout_marginTop="5dp"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:ellipsize="end"
+                android:lines="2"
+                android:id="@+id/item_pandabroadcast_pullto_time"
+                android:layout_marginTop="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/radio_hui"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:id="@+id/textView" />
+
+</LinearLayout>

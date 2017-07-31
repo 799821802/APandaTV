@@ -4,25 +4,28 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
     <LinearLayout
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="50dp"
+        >
         <EditText
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <Button
-            android:background="@color/colorPrimary"
-            android:textColor="@color/radio_bai"
-            android:text="发送"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="35dp" />
+            android:layout_height="40dp"
+            android:hint="添加评论...."
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/watchandachatbackgroud"
+            android:id="@+id/watch_content"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/watch_btsend"
+            android:layout_gravity="center"
+            android:background="#3251ae"
+            android:text="发送"/>
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/watchchat_pulltorefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
+        </com.jcodecraeer.xrecyclerview.XRecyclerView>
 </LinearLayout>

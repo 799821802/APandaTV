@@ -1,36 +1,37 @@
-package apandatv.ui.module.pandalive.pandaliveitemfragment.pandalivelive.pandalivelivemorelive;
+package apandatv.ui.module.pandalive.pandaliveitemfragment.pandalivelive.pandalivelivelook;
 
 import apandatv.model.biz.pandalivebiz.PandaLiveModeLImpl;
 import apandatv.model.biz.pandalivebiz.PandaLiveModel;
-import apandatv.model.entity.PandaLiveMore;
+import apandatv.model.entity.PandaLiveLook;
 import apandatv.net.callback.MyNetCallback;
 
 /**
  * Created by Administrator on 2017/7/31.
  */
 
-public class MoreEyeLivePresenter implements MoreEyeLiveContrat.Presenter {
+public class LookTalkPreser implements LookTalkContral.Presenter {
 
-    private MoreEyeLiveContrat.View view;
+    private LookTalkContral.View view;
     private PandaLiveModel pandaLiveModel;
 
-
-    public MoreEyeLivePresenter( MoreEyeLiveContrat.View view){
-        this.view = view;
+    public LookTalkPreser(LookTalkContral.View view){
+        this.view=view;
         view.setPresenter(this);
         pandaLiveModel = new PandaLiveModeLImpl();
-
     }
+
+
 
 
     @Override
     public void start() {
 
-
-        pandaLiveModel.getPandaLiveMore(new MyNetCallback<PandaLiveMore>() {
+        pandaLiveModel.getOandaLiveLook(new MyNetCallback<PandaLiveLook>() {
             @Override
-            public void onSuccess(PandaLiveMore pandaLiveMore) {
-                view.getData(pandaLiveMore);
+            public void onSuccess(PandaLiveLook pandaLiveLook) {
+
+                view.getData(pandaLiveLook);
+
             }
 
             @Override
@@ -38,7 +39,6 @@ public class MoreEyeLivePresenter implements MoreEyeLiveContrat.Presenter {
 
             }
         });
-
 
 
     }

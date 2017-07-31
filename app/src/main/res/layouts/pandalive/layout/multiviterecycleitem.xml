@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_marginLeft="15dp"
+        android:layout_width="130dp"
+        android:layout_height="100dp">
+
+        <ImageView
+
+            android:id="@+id/item_morelive_img"
+            android:layout_width="130dp"
+            android:layout_height="100dp" />
+
+
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="130dp"
+            android:layout_height="20dp">
+
+            <ImageView
+                android:background="@drawable/home_gradient"
+                android:layout_width="130dp"
+                android:layout_height="30dp" />
+
+            <ImageView
+                android:background="@drawable/home_live_shape"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+
+            <TextView
+            android:layout_centerVertical="true"
+                android:layout_marginLeft="45dp"
+                android:textSize="15dp"
+                android:textColor="@color/radio_bai"
+                android:text="Live"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:id="@+id/item_morelive_title"
+
+        android:text="================="
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

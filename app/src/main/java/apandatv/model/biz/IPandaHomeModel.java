@@ -11,6 +11,12 @@ import apandatv.net.callback.MyNetCallback;
 
 public interface IPandaHomeModel extends BaseModel {
 
+//    熊猫直播 页面
     void loadHomeList(MyNetCallback<PandaHome> callback);
+
+//    熊猫
     void loadVersion(MyNetCallback<UpDateLoading> callback);
+
+
+
 }

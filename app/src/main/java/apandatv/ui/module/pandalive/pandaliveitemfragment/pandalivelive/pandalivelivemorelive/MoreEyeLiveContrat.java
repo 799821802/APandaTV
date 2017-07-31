@@ -2,7 +2,7 @@ package apandatv.ui.module.pandalive.pandaliveitemfragment.pandalivelive.pandali
 
 import apandatv.base.BasePresenter;
 import apandatv.base.BaseView;
-import apandatv.model.entity.PandaLiveTextBean;
+import apandatv.model.entity.PandaLiveMore;
 
 /**
  * Created by Administrator on 2017/7/31.
@@ -11,7 +11,7 @@ import apandatv.model.entity.PandaLiveTextBean;
 public class MoreEyeLiveContrat  {
     interface View extends BaseView<Presenter> {
 
-        void getData(PandaLiveTextBean pandaLiveTextBean);//网络请求成功
+        void getData(PandaLiveMore pandaLiveMore);//网络请求成功
 
 
     }

@@ -1,5 +1,9 @@
 package apandatv.ui.module.pandalive.pandaliveitemfragment.pandalivelive;
 
+import android.support.v4.app.Fragment;
+
+import java.util.ArrayList;
+
 import apandatv.base.BasePresenter;
 import apandatv.base.BaseView;
 import apandatv.model.entity.PandaLiveLive;
@@ -20,6 +24,8 @@ public class PandaLiveLiveContract   {
 
     interface Presenter extends BasePresenter {
 
+
+        ArrayList<Fragment> getFragment();
 
 
     }
