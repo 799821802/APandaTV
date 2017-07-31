@@ -208,6 +208,7 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
     public void setPresenter(LiveChinaContract.Presenter presenter) {
 
         this.presenter = presenter;
+
     }
 
     @OnClick(R.id.livechina_add)
