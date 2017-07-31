@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by lenovo on 2017/7/30.
  */
 
-public class UpDateLoading {
+public class UpDateLoading  implements Serializable{
 
     /**
      * status : success

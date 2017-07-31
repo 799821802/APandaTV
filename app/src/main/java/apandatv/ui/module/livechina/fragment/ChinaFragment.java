@@ -30,8 +30,7 @@ public class ChinaFragment extends BaseFragment implements ChinaContract.View{
     public ChinaFragment(String url) {
         this.url = url;
     }
-
-
+    
     @Override
     protected int getLayoutId() {
         return R.layout.china_fragment;

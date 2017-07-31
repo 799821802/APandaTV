@@ -1,12 +1,13 @@
 package apandatv.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lizhuofang on 2017/7/19.
  */
 
-public class LoginEntity {
+public class LoginEntity implements Serializable {
 
     /**
      * timestamp : 2017-07-19 23:34:33

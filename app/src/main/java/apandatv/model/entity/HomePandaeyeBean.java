@@ -1,12 +1,13 @@
 package apandatv.model.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by lenovo on 2017/7/28.
  */
 
-public class HomePandaeyeBean {
+public class HomePandaeyeBean implements Serializable {
 
 
     private List<ListBean> list;
@@ -19,7 +20,7 @@ public class HomePandaeyeBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable {
         /**
          * url : http://panview.ipanda.com/2017/06/14/VIDE9KtPTNDzejj693BpDdWJ170614.shtml
          * image : http://p1.img.cctvpic.com/photoAlbum/page/performance/img/2017/6/14/1497403375650_254.jpg

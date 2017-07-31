@@ -7,7 +7,7 @@ import java.util.List;
  * Created by lenovo on 2017/7/30.
  */
 
-public class ChinaItemBean {
+public class ChinaItemBean implements Serializable{
 
     private List<LiveBean> live;
 

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.jiyun.apandatv.R;
 
 import apandatv.app.App;
+import apandatv.ui.module.livechina.adapter.ChageGridViewAdapter;
 
 /**
  * Created by lenovo on 2017/7/30.
@@ -151,7 +152,7 @@ public class MyGridView extends GridView {
         clearChildAnimation();
         for (int i = 0; i < getCount(); i++)
             getChildAt(i).setVisibility(VISIBLE);
-        ((MyGridAdapter) getAdapter()).notifyDataSetChanged();
+        ((ChageGridViewAdapter) getAdapter()).notifyDataSetChanged();
     }
 
     private void stopDrag() {
@@ -229,7 +230,7 @@ public class MyGridView extends GridView {
                     });
                 }
             }
-            ((MyGridAdapter) getAdapter()).swap(prePos, mTempPos);
+            ((ChageGridViewAdapter) getAdapter()).swap(prePos, mTempPos);
             prePos = mTempPos;
         }
         windowLayoutParams.x += deltaX;
@@ -253,7 +254,7 @@ public class MyGridView extends GridView {
                 invisibleView = getChildAt(mTempPos);
                 if (isDraging)//动画结束调用的，若是没有在拖动了，就无需隐藏当前view
                     invisibleView.setVisibility(INVISIBLE);
-                ((MyGridAdapter) getAdapter()).notifyDataSetChanged();
+                ((ChageGridViewAdapter) getAdapter()).notifyDataSetChanged();
             }
         }
     }

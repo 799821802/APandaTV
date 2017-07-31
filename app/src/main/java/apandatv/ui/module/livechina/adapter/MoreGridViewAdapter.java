@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.jiyun.apandatv.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import apandatv.model.entity.LiveChinaBean;
 
@@ -19,8 +19,8 @@ import apandatv.model.entity.LiveChinaBean;
 
 public class MoreGridViewAdapter extends BaseAdapter {
     FragmentActivity activity;
-    ArrayList<LiveChinaBean.AlllistBean> alllistBeen_aray;
-    public MoreGridViewAdapter(FragmentActivity activity, ArrayList<LiveChinaBean.AlllistBean> alllistBeen_aray) {
+    List<LiveChinaBean.AlllistBean> alllistBeen_aray;
+    public MoreGridViewAdapter(FragmentActivity activity, List<LiveChinaBean.AlllistBean> alllistBeen_aray) {
         this.activity=activity;
         this.alllistBeen_aray = alllistBeen_aray;
     }

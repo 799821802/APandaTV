@@ -17,6 +17,8 @@ public interface LiveChinaContract {
         void playVideo();
         void loadWebView();
         void showPop();
+        void setOnChageGridItem();
+        void setOnMoreGridItem();
     }
     interface Presenter extends BasePresenter {
 

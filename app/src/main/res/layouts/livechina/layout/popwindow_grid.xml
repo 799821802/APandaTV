@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/popwindow_parent"
+    android:background="#e2284786"
+    android:orientation="vertical">
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/livechina_delectpop"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/live_china_delect_channel" />
+
+    <RelativeLayout
+        android:id="@+id/popwindow_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/livechina_delectpop">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="切换内容"
+            android:id="@+id/qiehuan"
+            android:textColor="#fff"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tuodong"
+            android:visibility="gone"
+            android:textColor="#fff"
+            android:textSize="15dp"
+            android:layout_marginLeft="20dp"
+            android:text="长按拖动可以排序"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/qiehuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/edtix_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/popwindow_biankuang"
+            android:text="编辑"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+
+    </RelativeLayout>
+
+
+    <apandatv.ui.module.livechina.mygridview.MyGridView
+        android:id="@+id/change_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/popwindow_linear"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:numColumns="3"
+        android:verticalSpacing="20dp">
+
+    </apandatv.ui.module.livechina.mygridview.MyGridView>
+
+
+
+    <TextView
+        android:layout_below="@id/change_gridview"
+        android:id="@+id/moregridview_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="点击添加更多栏目"
+        android:textColor="#fff"
+        android:textSize="15dp" />
+
+    <apandatv.ui.module.livechina.mygridview.MyGridView
+        android:id="@+id/more_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moregridview_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:numColumns="3"
+        android:verticalSpacing="20dp">
+
+    </apandatv.ui.module.livechina.mygridview.MyGridView>
+
+
+
+    </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>

@@ -1,8 +1,10 @@
 package apandatv.net;
 
 
+import android.app.ProgressDialog;
 import android.widget.ImageView;
 
+import java.io.File;
 import java.util.Map;
 
 import apandatv.net.callback.MyNetCallback;
@@ -23,7 +25,7 @@ public interface IHttp {
 
     void loadImage(String url, ImageView imageView);//加载图片
     void upload();//上传
-    void download();//下载
+    File download(String uri, ProgressDialog pd) throws Exception;//下载
 
 
 }
