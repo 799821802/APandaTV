@@ -21,7 +21,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        App.context = this;
+
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         init();
@@ -75,5 +75,11 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         return lastFragment;
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        App.context = this;
     }
 }

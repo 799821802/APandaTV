@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jiyun.apandatv">
 
-    <!--Banner-->
-    <uses-permission android:name="android.permission.INTERNET" />//联网
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />//读取外置存储卡
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Banner -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    //联网
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    //读取外置存储卡
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="apandatv.app.App"
         android:allowBackup="true"
@@ -20,8 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="apandatv.activity.MainActivity"/>
-       <activity android:name="apandatv.base.BaseActivity"/>
+        <activity android:name="apandatv.activity.MainActivity" />
+        <activity android:name="apandatv.base.BaseActivity" />
+        <activity android:name="apandatv.activity.WebActivity"/>
+        <activity android:name="apandatv.ui.module.interactive.InteractiveActivity"></activity>
     </application>
 
 </manifest>

@@ -30,4 +30,6 @@ public class Urls {
     public static final String UPDATE = "http://115.182.9.124/index.php?action=release-GetNewVersions&applyName=1426217325";
     //直播中国
     public static final String LIVECHINA = BASEURL + "PAGE14501775094142282/index.json";
+    //原创互动
+    public static final String INTERACTIVE = BASEURL + "PAGE14501767715521482/index.json";
 }

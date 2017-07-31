@@ -1,5 +1,6 @@
 package apandatv.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -12,8 +13,8 @@ import com.jiyun.apandatv.R;
 import apandatv.base.BaseActivity;
 import apandatv.ui.module.home.HomeFragment;
 import apandatv.ui.module.home.HomePresenter;
+import apandatv.ui.module.interactive.InteractiveActivity;
 import apandatv.ui.module.livechina.LiveChinaFragment;
-import apandatv.ui.module.livechina.LiveChinaPresenter;
 import apandatv.ui.module.pandaculture.PandaCultureFragment;
 import apandatv.ui.module.pandaeye.PandaEyeFragment;
 import apandatv.ui.module.pandalive.PandaLiveFragment;
@@ -77,6 +78,8 @@ public class MainActivity extends BaseActivity {
             case R.id.titleTv:
                 break;
             case R.id.hudongImg:
+
+                startActivity(new Intent(this, InteractiveActivity.class));
                 break;
             case R.id.homePage:
                 showTitle(R.string.home_page,HOMETYPE);
