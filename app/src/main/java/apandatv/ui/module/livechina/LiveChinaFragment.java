@@ -201,6 +201,7 @@ public class LiveChinaFragment extends BaseFragment implements LiveChinaContract
     public void dimissProgress() {
 
         CustomDialog.getInsent().dismiss();
+
     }
 
     @Override
