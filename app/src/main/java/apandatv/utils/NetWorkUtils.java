@@ -15,6 +15,7 @@ public class NetWorkUtils {
     /*
     * 判断网络连接是否可用
     */
+
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
