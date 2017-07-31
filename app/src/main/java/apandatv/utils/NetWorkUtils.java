@@ -51,6 +51,7 @@ public class NetWorkUtils {
     /*
     *判断是wifi还是3g网络,wifi就可以建议下载或者在线播放。
     */
+
     public static boolean isWifi(Context context) {
 
         ConnectivityManager cm = (ConnectivityManager) context
