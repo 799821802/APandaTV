@@ -11,6 +11,9 @@ import apandatv.model.entity.PandaLiveTextBean;
 /**
  * Created by Administrator on 2017/7/29.
  *
+ * 597f3065aed1793349001a43
+ *
+ *
  */
 
 public class PandaLiveContrrat {
