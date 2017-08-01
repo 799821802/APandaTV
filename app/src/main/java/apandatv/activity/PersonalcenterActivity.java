@@ -65,8 +65,8 @@ public class PersonalcenterActivity extends BaseActivity {
             case R.id.dianjilogin:
                 break;
             case R.id.linear1:
-//                Intent intent = new Intent(PersonalcenterActivity.this,LoginActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(PersonalcenterActivity.this,LoginActivity.class);
+                startActivity(intent);
 
                 break;
             case R.id.linear2:

@@ -133,6 +133,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
     }
 
     @Override
+    public void insertGreendao(MyHistroy myHistroy) {
+
+        MyHistroyDao greendao = getGreendao();
+        greendao.insert(myHistroy);
+
+    }
+
+    @Override
     public void onRefresh() {
 
         homeXrecyclerview.postDelayed(new Runnable() {

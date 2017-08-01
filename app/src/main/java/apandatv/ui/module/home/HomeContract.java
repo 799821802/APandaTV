@@ -19,10 +19,11 @@ public interface HomeContract {
 
         void showHomeListData(PandaHome pandaHome);
         void showMessage(String msg);
-        void playVideo();
-        void loadWebView();
+        void playVideo();//跳转播放
+        void loadWebView();//跳转至webview
         MyHistroyDao getGreendao();
-        List<MyHistroy> selectGreendao();
+        List<MyHistroy> selectGreendao();//查询数据局
+        void insertGreendao(MyHistroy myHistroy);//插入数据
     }
 
     interface Presenter extends BasePresenter {

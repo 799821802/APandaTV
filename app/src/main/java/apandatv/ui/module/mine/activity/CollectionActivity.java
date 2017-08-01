@@ -1,21 +1,15 @@
 package apandatv.ui.module.mine.activity;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jiyun.apandatv.R;
 
-import java.util.ArrayList;
-
 import apandatv.base.BaseActivity;
-import apandatv.ui.module.mine.adapter.CollectionAdapter;
-import apandatv.ui.module.mine.fragment.CollcetionLiveFragment;
-import apandatv.ui.module.mine.fragment.CollectionLookFragment;
-import apandatv.widget.view.MyViewPager;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -25,21 +19,34 @@ import butterknife.OnClick;
 
 public class CollectionActivity extends BaseActivity {
 
+
+    @BindView(R.id.collection_all_button)
+    TextView collectionAllButton;
+    @BindView(R.id.collection_delete_button)
+    TextView collectionDeleteButton;
+    @BindView(R.id.all_delete_linear)
+    LinearLayout allDeleteLinear;
     @BindView(R.id.collection_return)
     ImageView collectionReturn;
     @BindView(R.id.collection_bianji)
     TextView collectionBianji;
     @BindView(R.id.shoutoolbar)
     Toolbar shoutoolbar;
-    @BindView(R.id.collection_tablayout)
-    TabLayout collectionTablayout;
-    @BindView(R.id.collection_viewpager)
-    MyViewPager collectionViewpager;
+    @BindView(R.id.collection_live)
+    TextView collectionLive;
+    @BindView(R.id.collection_what)
+    TextView collectionWhat;
+    @BindView(R.id.live_bottom_blue)
+    TextView liveBottomBlue;
+    @BindView(R.id.what_bottom_blue)
+    TextView whatBottomBlue;
+    @BindView(R.id.collection_buttom_blue)
+    LinearLayout collectionButtomBlue;
+    @BindView(R.id.collection_live_img)
+    ImageView collectionLiveImg;
+    @BindView(R.id.collection_what_recycler)
+    RecyclerView collectionWhatRecycler;
 
-
-    private CollcetionLiveFragment live_fragment;
-    private CollectionLookFragment look_fragment;
-    ArrayList<Fragment> arrayList;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_collection;
@@ -48,30 +55,42 @@ public class CollectionActivity extends BaseActivity {
     @Override
     protected void init() {
 
-        arrayList = new ArrayList<>();
-        live_fragment = new CollcetionLiveFragment();
-        look_fragment = new CollectionLookFragment();
-        arrayList.add(live_fragment);
-        arrayList.add(look_fragment);
-
-        CollectionAdapter adapter = new CollectionAdapter(getSupportFragmentManager(),arrayList);
-        collectionViewpager.setAdapter(adapter);
-        collectionTablayout.setupWithViewPager(collectionViewpager);
-        collectionTablayout.setTabMode(TabLayout.MODE_FIXED);
-
 
     }
 
-    @OnClick({R.id.collection_return, R.id.collection_bianji})
+    @OnClick({R.id.collection_all_button, R.id.collection_delete_button, R.id.collection_return, R.id.collection_bianji, R.id.collection_live, R.id.collection_what})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.collection_all_button:
+
+
+
+                break;
+            case R.id.collection_delete_button:
+                break;
             case R.id.collection_return:
 
                 finish();
                 break;
             case R.id.collection_bianji:
 
+                allDeleteLinear.setVisibility(View.VISIBLE);
 
+                break;
+            case R.id.collection_live:
+
+                collectionBianji.setVisibility(View.GONE);
+                liveBottomBlue.setVisibility(View.VISIBLE);
+                whatBottomBlue.setVisibility(View.GONE);
+                collectionWhatRecycler.setVisibility(View.GONE);
+                break;
+            case R.id.collection_what:
+
+                collectionBianji.setVisibility(View.VISIBLE);
+                whatBottomBlue.setVisibility(View.VISIBLE);
+                liveBottomBlue.setVisibility(View.GONE);
+                collectionLiveImg.setVisibility(View.GONE);
+                collectionWhatRecycler.setVisibility(View.VISIBLE);
                 break;
         }
     }
