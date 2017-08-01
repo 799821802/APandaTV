@@ -62,6 +62,7 @@ public class CollectionActivity extends BaseActivity {
     @OnClick({R.id.collection_all_button, R.id.collection_delete_button, R.id.collection_return, R.id.collection_bianji, R.id.collection_live, R.id.collection_what})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+
             case R.id.collection_all_button:
 
 
