@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/histroy_retturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/personal_back_img" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="历史记录"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_bianji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="编辑"
+                android:layout_marginRight="10dp"
+                android:textColor="#fff"
+                android:textSize="16dp" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/all_delete_linear"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/all_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="全选"
+            android:textSize="14dp" />
+
+
+        <TextView
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="删除"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_above="@id/all_delete_linear"
+        android:id="@+id/historical_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_margin="5dp">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>
