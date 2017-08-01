@@ -1,5 +1,6 @@
 package apandatv.ui.module.home;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
@@ -10,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import apandatv.base.BaseFragment;
+import apandatv.model.db.dbhistroy.DaoMaster;
+import apandatv.model.db.dbhistroy.DaoSession;
+import apandatv.model.db.dbhistroy.MyHistroy;
+import apandatv.model.db.dbhistroy.MyHistroyDao;
 import apandatv.model.entity.PandaHome;
 import apandatv.ui.module.home.adapter.HomeAdapter;
 import apandatv.utils.LogUtils;
@@ -105,6 +110,34 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
     @Override
     public void loadWebView() {
 
+
+    }
+
+    @Override
+    public MyHistroyDao getGreendao() {
+
+        DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(getContext(), "Histrogry.dp", null);
+        SQLiteDatabase database = helper.getWritableDatabase();
+        DaoMaster master = new DaoMaster(database);
+        DaoSession session = master.newSession();
+        MyHistroyDao histroyGreeDao = session.getMyHistroyDao();
+        return histroyGreeDao;
+
+    }
+
+    @Override
+    public List<MyHistroy> selectGreendao() {
+
+        MyHistroyDao histroyDao = getGreendao();
+        List<MyHistroy> list = histroyDao.queryBuilder().list();
+        return list;
+    }
+
+    @Override
+    public void insertGreendao(MyHistroy myHistroy) {
+
+        MyHistroyDao greendao = getGreendao();
+        greendao.insert(myHistroy);
 
     }
 

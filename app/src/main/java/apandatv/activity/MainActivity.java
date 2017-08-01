@@ -73,14 +73,9 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.iconImg:
                 break;
-
-//            跳到个人中心
             case R.id.personImg:
 
-
-              Intent intent = new Intent(MainActivity.this, PersonalcenterActivity.class);
-                startActivity(intent);
-
+                startActivity(new Intent(this,PersonalcenterActivity.class));
                 break;
             case R.id.titleTv:
                 break;
