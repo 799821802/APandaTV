@@ -24,7 +24,6 @@
             android:id="@+id/edit_phone"
             android:layout_width="match_parent"
             android:layout_height="120px"
-
             android:background="@color/radio_bai"
             android:hint="@string/regist_phone_account_hint"
             android:padding="15px"

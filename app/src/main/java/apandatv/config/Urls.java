@@ -49,8 +49,7 @@ public class Urls {
     public static final String LOGINiMAGE = "http://reg.cntv.cn/simple/verificationCode.action";
 
     //    登录
-    public static final String LOGIN = "   https://reg.cntv.cn/login/login.action";
+    public static final String LOGIN = "https://reg.cntv.cn/login/login.action";
 
-    public static final String ROLLVIDEO =
-            "http://www.ipanda.com/kehuduan/xmwh/index.json ";
+    public static final String ROLLVIDEO = "http://www.ipanda.com/kehuduan/xmwh/index.json ";
 }

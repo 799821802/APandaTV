@@ -2,6 +2,8 @@ package apandatv.activity.reginstered.reginstere_fragment.phone;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import apandatv.config.Urls;
 import apandatv.model.biz.loginandregin.ReginsModel;
 import apandatv.model.biz.loginandregin.ReginsModelImpl;
 import apandatv.net.OkHttpUtils;
+import apandatv.utils.LogUtils;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -87,12 +90,13 @@ public class PhonePresenter implements PhoneContart.Presenter {
     }
 
 //    获取手机验证
+OkHttpClient client;
     @Override
     public void getphonevalition(String jsonid, String phonenumber, String imagtion) {
         String url = "http://reg.cntv.cn/regist/getVerifiCode.action";
         String from = "http://cbox_mobile.regclientuser.cntv.cn";
 
-        OkHttpClient client = new OkHttpClient();
+        client  = new OkHttpClient();
 
                 RequestBody body = new FormBody.Builder()
                 .add("method", "getRequestVerifiCodeM")
@@ -112,11 +116,13 @@ public class PhonePresenter implements PhoneContart.Presenter {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-
+                    LogUtils.e("TAG","返回手机验证码失败"+e.toString());
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
+
+                    LogUtils.e("TAG","手机注册 返回 手机验证码"+response.body().string());
 
                 }
             });
@@ -127,7 +133,45 @@ public class PhonePresenter implements PhoneContart.Presenter {
     }
 
     @Override
-    public void getphoneRe() {
+    public void getphoneRe(String phone,String yanzhen,String passad) {
+        try {
+            RequestBody     body = new FormBody.Builder()
+                    .add("method", "saveMobileRegisterM")
+                    .add("mobile", phone)
+                    .add("verfiCode", yanzhen)
+                    .add("passWd", URLEncoder.encode(passad, "UTF-8"))
+                    .add("verfiCodeType", "1")
+                    .add("addons", URLEncoder.encode("http://cbox_mobile.regclientuser.cntv.cn", "UTF-8"))
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url("https://reg.cntv.cn/regist/mobileRegist.do")
+                    .addHeader("Referer", URLEncoder.encode("http://cbox_mobile.regclientuser.cntv.cn", "UTF-8"))
+                    .addHeader("User-Agent", URLEncoder.encode("CNTV_APP_CLIENT_CBOX_MOBILE", "UTF-8"))
+                    .post(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e("TAG", e.getMessage().toString());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+
+                    String loginSate = response.body().string();
+
+                    Log.e("TAG", "注册状态：：" + loginSate);
+                    Toast.makeText(App.context, "注册成功", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

@@ -70,10 +70,6 @@ public class PhoneRegistrationFragment extends BaseFragment implements PhoneCont
 
     @Override
     protected void init(View view) {
-//手机号码
-        phonenum = editPhone.getText().toString().trim();
-//        图形验证码
-        imageun = editImgyanzhengma.getText().toString().trim();
 
 
     }
@@ -130,6 +126,10 @@ public class PhoneRegistrationFragment extends BaseFragment implements PhoneCont
                 break;
 //            点击获取 手机验证功
             case R.id.personal_reg_phonecheck:
+//手机号码
+                phonenum = editPhone.getText().toString().trim();
+//        图形验证码
+                imageun = editImgyanzhengma.getText().toString().trim();
 
                 String cookie = OkHttpUtils.getInstance().getCookie();
                 presenter.getphonevalition(cookie, phonenum, imageun);
@@ -148,6 +148,15 @@ public class PhoneRegistrationFragment extends BaseFragment implements PhoneCont
             case R.id.hint_xieyi:
                 break;
             case R.id.btn_register:
+//手机号码
+                phonenum = editPhone.getText().toString().trim();
+//        手机验证码
+                String trim = editPhoneyanzhengma.getText().toString().trim();
+//                手机密码
+                String trim1 = editInputpasswrod.getText().toString().trim();
+
+                presenter.getphoneRe(phonenum,trim,trim1);
+
                 break;
         }
     }

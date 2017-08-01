@@ -25,7 +25,7 @@ public class PhoneContart {
 
 //     手机  注册 按钮
 
-        void  getphoneRe();
+        void  getphoneRe(String phone,String yanzhen,String passad);
 
 
     }
