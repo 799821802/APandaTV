@@ -69,6 +69,7 @@ public class CollectionActivity extends BaseActivity {
 
                 break;
             case R.id.collection_delete_button:
+
                 break;
             case R.id.collection_return:
 
