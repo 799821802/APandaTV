@@ -49,6 +49,7 @@ public class CollectionActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.activity_collection;
     }
 
