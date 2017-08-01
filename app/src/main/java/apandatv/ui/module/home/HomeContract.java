@@ -1,8 +1,12 @@
 package apandatv.ui.module.home;
 
 
+import java.util.List;
+
 import apandatv.base.BasePresenter;
 import apandatv.base.BaseView;
+import apandatv.model.db.dbhistroy.MyHistroy;
+import apandatv.model.db.dbhistroy.MyHistroyDao;
 import apandatv.model.entity.PandaHome;
 
 /**
@@ -17,6 +21,8 @@ public interface HomeContract {
         void showMessage(String msg);
         void playVideo();
         void loadWebView();
+        MyHistroyDao getGreendao();
+        List<MyHistroy> selectGreendao();
     }
 
     interface Presenter extends BasePresenter {

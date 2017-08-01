@@ -5,7 +5,6 @@ import android.app.Application;
 import com.umeng.socialize.PlatformConfig;
 
 import apandatv.base.BaseActivity;
-import apandatv.utils.CrashHandler;
 
 /**
  * Created by lenovo on 2017/7/27.
@@ -20,7 +19,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CrashHandler.getInstance().init(this);//初始化全局异常管理
+//        CrashHandler.getInstance().init(this);//初始化全局异常管理
     }
     {
 

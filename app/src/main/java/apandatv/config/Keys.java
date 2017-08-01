@@ -7,5 +7,6 @@ package apandatv.config;
 
 public class Keys {
 
+    public static final String WEBKEY = "url";
 
 }

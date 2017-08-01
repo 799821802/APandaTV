@@ -28,6 +28,10 @@
         <activity android:name="apandatv.activity.WebActivity"/>
         <activity android:name="apandatv.ui.module.interactive.InteractiveActivity"></activity>
         <activity android:name="apandatv.activity.reginstered.RegisteredActivity" />
+        <activity android:name="apandatv.activity.PersonalcenterActivity"/>
+        <activity android:name="apandatv.ui.module.mine.activity.HistroyActivity"/>
+        <activity android:name="apandatv.ui.module.mine.activity.CollectionActivity"/>
+
     </application>
 
 </manifest>

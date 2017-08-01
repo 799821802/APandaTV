@@ -74,6 +74,8 @@ public class MainActivity extends BaseActivity {
             case R.id.iconImg:
                 break;
             case R.id.personImg:
+
+                startActivity(new Intent(this,PersonalcenterActivity.class));
                 break;
             case R.id.titleTv:
                 break;
