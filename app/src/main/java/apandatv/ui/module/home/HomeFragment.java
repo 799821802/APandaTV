@@ -121,6 +121,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
         DaoSession session = master.newSession();
         MyHistroyDao histroyGreeDao = session.getMyHistroyDao();
         return histroyGreeDao;
+
     }
 
     @Override
