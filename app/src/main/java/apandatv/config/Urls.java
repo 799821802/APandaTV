@@ -26,8 +26,8 @@ public class Urls {
     // 熊猫播报 页面
     public static final String PANDAEYE = "http://www.ipanda.com/kehuduan/PAGE14503485387528442/index.json";
 
-//    http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda
-public static final String PANDAEYEXrecy = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda";
+    //    http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda
+    public static final String PANDAEYEXrecy = "http://api.cntv.cn/apicommon/index?path=iphoneInterface/general/getArticleAndVideoListInfo.json&primary_id=PAGE1449807494852603,PAGE1451473625420136,PAGE1449807502866458,PAGE1451473627439140,PAGE1451473547108278,PAGE1451473628934144&serviceId=panda";
 
     //列表
     public static final String PAGELIST = BASEURL + "PAGE14501786751053212/index.json";
@@ -48,5 +48,9 @@ public static final String PANDAEYEXrecy = "http://api.cntv.cn/apicommon/index?p
 
     public static final String LOGINiMAGE = "http://reg.cntv.cn/simple/verificationCode.action";
 
+    //    登录
+    public static final String LOGIN = "   https://reg.cntv.cn/login/login.action";
 
+    public static final String ROLLVIDEO =
+            "http://www.ipanda.com/kehuduan/xmwh/index.json ";
 }

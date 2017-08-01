@@ -20,6 +20,21 @@ import apandatv.model.entity.PandaLiveOther;
  */
 
 public class PandaOtherAdapter extends RecyclerView.Adapter {
+
+    private PandaOthierOnclik pandaOthierOnclik;
+    public interface PandaOthierOnclik{
+
+        void  getpandaOther(View view,int postion);
+    }
+
+    public void setPandaOthierOnclik(PandaOthierOnclik pandaOthierOnclik){
+        this.pandaOthierOnclik=pandaOthierOnclik;
+    }
+
+
+
+
+
     FragmentActivity activity;
     List<PandaLiveOther.VideoBean> video;
     public PandaOtherAdapter(FragmentActivity activity, List<PandaLiveOther.VideoBean> video) {
@@ -36,7 +51,7 @@ public class PandaOtherAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         My_View my_view = (My_View) holder;
 
@@ -47,6 +62,21 @@ public class PandaOtherAdapter extends RecyclerView.Adapter {
         my_view.data.setText(video.get(position).getPtime());
 
         Glide.with(activity).load(video.get(position).getImg()).into(my_view.imageView);
+
+
+        my_view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                pandaOthierOnclik.getpandaOther(v,position);
+            }
+        });
+
+
+
+
+
 
     }
 

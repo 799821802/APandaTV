@@ -61,19 +61,49 @@ public class PersonalcenterActivity extends BaseActivity {
             case R.id.user_headimg:
                 break;
             case R.id.dianjilogin:
+
+//                startActivityForResult(new Intent(PersonalcenterActivity.this, LoginActivity.class),0);
+
+
+
                 break;
 //            跳到登录
             case R.id.linear1:
-                Intent intent = new Intent(PersonalcenterActivity.this,LoginActivity.class);
-                startActivity(intent);
-
+                startActivityForResult(new Intent(PersonalcenterActivity.this, LoginActivity.class),0);
                 break;
             case R.id.linear2:
+
                 break;
             case R.id.linear3:
                 break;
             case R.id.linear4:
+                Intent intent = new Intent(PersonalcenterActivity.this,SetupActivity.class);
+                startActivity(intent);
+
+
                 break;
         }
     }
+
+//    跳转回传
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case 1000:
+                String result_value = data.getStringExtra("userid");
+                dianjilogin.setText("央视网友"+result_value);
+                break;
+            case 2000:
+                String name = data.getStringExtra("name");
+                dianjilogin.setText(name);
+                break;
+            case 3000:
+                dianjilogin.setText("点击登录");
+                break;
+        }
+    }
+
+
+
 }

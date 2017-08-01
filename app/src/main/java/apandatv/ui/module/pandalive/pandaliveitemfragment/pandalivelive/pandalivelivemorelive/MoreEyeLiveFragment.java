@@ -3,6 +3,7 @@ package apandatv.ui.module.pandalive.pandaliveitemfragment.pandalivelive.pandali
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jiyun.apandatv.R;
 
@@ -46,7 +47,7 @@ public class MoreEyeLiveFragment extends BaseFragment implements MoreEyeLiveCont
     public void getData(PandaLiveMore pandaLiveMore) {
         PandaLiveMore pandamore = pandaLiveMore;
 
-        List<PandaLiveMore.ListBean> list = pandamore.getList();
+        final List<PandaLiveMore.ListBean> list = pandamore.getList();
 
         MoreLookAdapter moreLookAdapter = new MoreLookAdapter(getActivity(), list);
 
@@ -55,6 +56,16 @@ public class MoreEyeLiveFragment extends BaseFragment implements MoreEyeLiveCont
         multiviewlivefargment.setLayoutManager(gridLayoutManager);
 
         multiviewlivefargment.setAdapter(moreLookAdapter);
+
+
+        moreLookAdapter.setMoreLookOnclick(new MoreLookAdapter.MoreLookOnclick() {
+            @Override
+            public void getMoreLookOnclick(View view, int postion) {
+
+                Toast.makeText(App.context, list.get(postion).getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 

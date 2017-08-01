@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jiyun.apandatv.R;
@@ -55,6 +56,8 @@ public class PandaLiveLiveFragment extends BaseFragment implements PandaLiveLive
 
     private PandaLiveLiveContract.Presenter presenter;
     private ArrayList<String>  tablearray = new ArrayList<>();
+    private ArrayList<PandaLiveLive.LiveBean> arraylist = new ArrayList<>();
+
 
     ArrayList<Fragment> fragment;
     @Override
@@ -93,6 +96,8 @@ public class PandaLiveLiveFragment extends BaseFragment implements PandaLiveLive
     public void getdata(PandaLiveLive liveLive) {
 
         List<PandaLiveLive.LiveBean> live = liveLive.getLive();
+        arraylist.addAll(live);
+
 
         Glide.with(App.context).load(live.get(0).getImage()).into(liveTopImg);
         radioTitle.setText(live.get(0).getTitle());
@@ -110,7 +115,7 @@ public class PandaLiveLiveFragment extends BaseFragment implements PandaLiveLive
     }
 
 
-    @OnClick({R.id.live_center_blue_img_down, R.id.live_center_blue_img_up})
+    @OnClick({R.id.live_center_blue_img_down, R.id.live_center_blue_img_up,R.id.panda_live_tv_imag})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.live_center_blue_img_down:
@@ -124,6 +129,14 @@ public class PandaLiveLiveFragment extends BaseFragment implements PandaLiveLive
                 liveCenterBlueImgUp.setVisibility(View.GONE);
                 tvVisibility.setVisibility(View.GONE);
                 break;
+
+            case R.id.panda_live_tv_imag:
+
+                Toast.makeText(App.context, arraylist.get(0).getTitle(), Toast.LENGTH_SHORT).show();
+
+                break;
+
+
         }
     }
 }

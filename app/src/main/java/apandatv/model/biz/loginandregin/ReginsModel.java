@@ -1,8 +1,7 @@
 package apandatv.model.biz.loginandregin;
 
-import android.graphics.drawable.Drawable;
-
 import apandatv.model.biz.BaseModel;
+import apandatv.model.entity.LoginBean;
 import apandatv.net.callback.MyNetCallback;
 
 /**
@@ -11,7 +10,7 @@ import apandatv.net.callback.MyNetCallback;
 
 public interface  ReginsModel extends BaseModel {
 
-//获取图形验证的方法
-    void getGraphicvalidation(MyNetCallback<Drawable> myNetCallback);
+    void getLogin(String username, String password, MyNetCallback<LoginBean> callback);
+
 
 }

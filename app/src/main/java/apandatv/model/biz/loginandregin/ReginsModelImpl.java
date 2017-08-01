@@ -1,8 +1,10 @@
 package apandatv.model.biz.loginandregin;
 
-import android.graphics.drawable.Drawable;
+import java.util.HashMap;
+import java.util.Map;
 
 import apandatv.config.Urls;
+import apandatv.model.entity.LoginBean;
 import apandatv.net.callback.MyNetCallback;
 
 /**
@@ -13,9 +15,16 @@ public class ReginsModelImpl implements ReginsModel {
 
 
     @Override
-    public void getGraphicvalidation(MyNetCallback<Drawable> myNetCallback) {
+    public void getLogin(String username, String password, MyNetCallback<LoginBean> callback) {
 
-        iHttp.get(Urls.LOGINiMAGE, null, myNetCallback);
+        Map<String, String> map = new HashMap<>();
+        map.put("username", username);
+        map.put("password", password);
+        map.put("service", "client_transaction");
+        map.put("from", "https://reg.cntv.cn/login/login.action");
+        iHttp.post(Urls.LOGIN, map, callback);
+
+
 
     }
 }

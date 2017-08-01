@@ -121,7 +121,7 @@
             android:textColor="@color/radio_hui"
             android:textCursorDrawable="@null" />
 
-        <TextView
+        <ImageView
             android:id="@+id/personal_reg_imgcheck"
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -130,7 +130,7 @@
             android:layout_marginLeft="30px"
             android:background="@color/radio_bai"
             android:gravity="center"
-            android:text="@string/forget_image_yanzhengma" />
+           />
     </RelativeLayout>
 
     <TextView

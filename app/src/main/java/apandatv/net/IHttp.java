@@ -15,7 +15,7 @@ import apandatv.net.callback.MyNetCallback;
 
 public interface IHttp {
 
-
+    <T> void get(String url, MyNetCallback<T> callback);
     <T> void get(String url, Map<String, String> params, MyNetCallback<T> callback);
 
     //get请求  带有请求头headers

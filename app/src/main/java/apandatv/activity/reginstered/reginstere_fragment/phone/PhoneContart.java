@@ -12,15 +12,20 @@ import apandatv.base.BaseView;
 public class PhoneContart {
     interface View extends BaseView<Presenter> {
 
-
         void  getImag(Bitmap bitmap);
-
 
     }
     //
     interface Presenter extends BasePresenter {
 
         void getGraphicvalidation();//获取图形验证码
+
+//        jsonid  手机号  图形验证码
+        void  getphonevalition(String jsonid,String phonenumber,String imagtion);//获取手机验证码
+
+//     手机  注册 按钮
+
+        void  getphoneRe();
 
 
     }

@@ -1,6 +1,9 @@
 package apandatv.net;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Environment;
 import android.widget.ImageView;
 
@@ -20,10 +23,12 @@ import java.util.Map;
 import java.util.Set;
 
 import apandatv.app.App;
+import apandatv.config.Keys;
 import apandatv.net.callback.MyNetCallback;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -55,7 +60,16 @@ public class OkHttpUtils implements IHttp {
     }
 
 
-//    发送get请求
+//    生成的
+
+    @Override
+    public <T> void get(String url, MyNetCallback<T> callback) {
+
+
+
+    }
+
+    //    发送get请求
     @Override
     public <T> void get(String url, Map<String, String> params, final MyNetCallback<T> callback) {
 
@@ -194,7 +208,30 @@ public class OkHttpUtils implements IHttp {
         });
     }
 
+//    短信验证码 的网络请求
 
+public void getImage(String url, Callback callback ){
+
+    Request request = new Request.Builder().url(url).build();
+
+    okHttpClient.newCall(request).enqueue(callback);
+
+
+
+}
+//    本地存储 Cook 值的
+    public void saveCookie(String value){
+        SharedPreferences cookie = App.context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = cookie.edit();
+        edit.putString("Cookie",value);
+        edit.commit();
+    }
+//  读取本地存储
+    public String getCookie() {
+        SharedPreferences cookie = App.context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
+        String string = cookie.getString("Cookie", null);
+        return string;
+    }
 
     @Override
     public void loadImage(String url, ImageView imageView) {
@@ -246,6 +283,60 @@ public class OkHttpUtils implements IHttp {
             return null;
         }
     }
+
+
+    public void loadImgCode(String url,final MyNetCallback<Bundle> callback){
+        Request request = new Request.Builder().url(url).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                App.context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //执行在主线程
+                        callback.onError(404,e.getMessage().toString());
+                    }
+                });
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                byte[] bytes = response.body().bytes();
+                Headers headers = response.headers();
+                String jsessionId =  headers.get("Set-Cookie");
+//                for (int i = 0; i < headers.size(); i++){
+//                    String name = headers.name(i);
+//                    headers.get("Set-Cookie")
+//                    MyLog.d("abc","name = "+name);
+//                    if(name != null && name.contains("JSESSIONID") && !name.contains(";")){
+//                        jsessionId = headers.get(name);
+//                        break;
+//                    }
+//                }
+                final Bundle bundle = new Bundle();
+                bundle.putString(Keys.JSESSIONID,jsessionId);
+                bundle.putByteArray(Keys.IMGCODE,bytes);
+
+                //执行在子线程中
+                App.context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //执行在主线程
+                        callback.onSuccess(bundle);
+                    }
+                });
+
+            }
+        });
+    }
+
+
+
+
+
+
+
 
 
 //    自动解析json至回调中的JavaBean

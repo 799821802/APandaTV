@@ -22,6 +22,18 @@ import apandatv.model.entity.PandaEyeXre;
  */
 
 public class PandaEyeAdapter extends RecyclerView.Adapter {
+
+    private PandaEyeOnclick pandaEyeOnclick;
+    public interface PandaEyeOnclick{
+        void getPandaOnclick(View view,int postion);
+    }
+
+    public void  setPandaEyeOnclick(PandaEyeOnclick pandaEyeOnclick){
+        this.pandaEyeOnclick=pandaEyeOnclick;
+    }
+
+
+
     FragmentActivity activity;
     ArrayList<PandaEyeXre.ListBean> arrayList;
     public PandaEyeAdapter(FragmentActivity activity, ArrayList<PandaEyeXre.ListBean> arrayList) {
@@ -38,7 +50,7 @@ View view = LayoutInflater.from(activity).inflate(R.layout.pandaeyerecycelitem,n
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         My_View my_view = (My_View) holder;
 
@@ -49,6 +61,17 @@ View view = LayoutInflater.from(activity).inflate(R.layout.pandaeyerecycelitem,n
         sdf.format(new Date(lcc_time * 1000L));
         my_view.data.setText(sdf.format(new Date(lcc_time * 1000L)));
         Glide.with(activity).load(arrayList.get(position).getPicurl()).into(my_view.imageView);
+
+
+        my_view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                pandaEyeOnclick.getPandaOnclick(v,position);
+
+            }
+        });
+
 
 
     }
