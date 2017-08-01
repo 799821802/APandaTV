@@ -1,6 +1,8 @@
-package apandatv.activity.reginstered.reginstere_fragment.phone;
+package apandatv.activity.reginstered.reginstere_fragment.registered;
 
-import android.graphics.Bitmap;
+import android.support.v4.app.Fragment;
+
+import java.util.ArrayList;
 
 import apandatv.base.BasePresenter;
 import apandatv.base.BaseView;
@@ -8,17 +10,15 @@ import apandatv.base.BaseView;
 /**
  * Created by Administrator on 2017/8/1.
  */
-//
-public class PhoneContart {
+
+public class RegistereContart {
+
     interface View extends BaseView<Presenter> {
 
     }
-    //
+//
     interface Presenter extends BasePresenter {
-
-
-        Bitmap getGraphicvalidation();//获取图形验证码
-
+    ArrayList<Fragment> getFragment();
 
     }
 

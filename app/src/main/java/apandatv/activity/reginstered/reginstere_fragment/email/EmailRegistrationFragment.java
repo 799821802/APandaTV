@@ -2,6 +2,8 @@ package apandatv.activity.reginstered.reginstere_fragment.email;
 
 import android.view.View;
 
+import com.jiyun.apandatv.R;
+
 import apandatv.base.BaseFragment;
 
 /**
@@ -11,7 +13,7 @@ import apandatv.base.BaseFragment;
 public class EmailRegistrationFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.emailfragmnet;
     }
 
     @Override
