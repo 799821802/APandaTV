@@ -36,7 +36,7 @@
         <activity android:name="apandatv.activity.LoginActivity"></activity>
         <activity android:name="apandatv.activity.PersonalcenterActivity"></activity>
         <activity android:name="apandatv.activity.SetupActivity"></activity>
-
+        <activity android:name="apandatv.activity.PersonAboutActivity"></activity>
 
 
 

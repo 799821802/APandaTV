@@ -27,7 +27,6 @@ import apandatv.config.Keys;
 import apandatv.net.callback.MyNetCallback;
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -170,15 +169,32 @@ public class OkHttpUtils implements IHttp {
     @Override
     public <T> void post(String url, Map<String, String> params, final MyNetCallback<T> callback) {
 
-        FormBody.Builder builder = new FormBody.Builder();
-        if(params !=null && params.size() > 0){
-            Set<String> keys = params.keySet();
-            for (String key : keys) {
+//        FormBody.Builder builder = new FormBody.Builder();
+//        if(params !=null && params.size() > 0){
+//            Set<String> keys = params.keySet();
+//            for (String key : keys) {
+//                String value = params.get(key);
+//                builder.add(key,value);
+//            }
+//        }
+//        Request request = new Request.Builder().url(url).post(builder.build()).build();
+        StringBuffer sb=new StringBuffer(url);
+        if (params !=null && params.size()>0){
+            sb.append("?");
+            Set<String> keySet = params.keySet();
+            for (String key : keySet) {
                 String value = params.get(key);
-                builder.add(key,value);
+                sb.append(key).append("=").append(value).append("&");
             }
+            url=sb.deleteCharAt(sb.length()-1).toString();
         }
-        Request request = new Request.Builder().url(url).post(builder.build()).build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Referer","https://reg.cntv.cn/login/login.action")
+                                .addHeader("User-Agent","CNTV_APP_CLIENT_CYNTV_MOBILE")
+                                .build();
+
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, final IOException e) {

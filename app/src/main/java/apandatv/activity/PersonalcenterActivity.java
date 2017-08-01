@@ -57,14 +57,13 @@ public class PersonalcenterActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.personal_image:
+
+                PersonalcenterActivity.this.finish();
+
                 break;
             case R.id.user_headimg:
                 break;
             case R.id.dianjilogin:
-
-//                startActivityForResult(new Intent(PersonalcenterActivity.this, LoginActivity.class),0);
-
-
 
                 break;
 //            跳到登录

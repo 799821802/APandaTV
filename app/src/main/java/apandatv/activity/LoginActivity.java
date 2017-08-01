@@ -25,6 +25,7 @@ import apandatv.base.BaseActivity;
 import apandatv.model.biz.loginandregin.ReginsModelImpl;
 import apandatv.model.entity.LoginBean;
 import apandatv.net.callback.MyNetCallback;
+import apandatv.utils.LogUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 //import butterknife.BindView;
@@ -154,6 +155,8 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onSuccess(LoginBean loginBean) {
                         String errMsg = loginBean.getErrMsg();
+                        LogUtils.e("TAg","看看登录返回的结果"+errMsg);
+
                         if (errMsg.equals("成功")) {
                             Intent intent1 =new Intent();
                             intent1.putExtra("userid",loginBean.getUser_seq_id());
@@ -168,7 +171,7 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onError(int errorCode, String errorMsg) {
                         Toast.makeText(LoginActivity.this, "登录失败++++++", Toast.LENGTH_SHORT).show();
-                        Log.e("TAG","登陆失败的理由是"+errorMsg.toString());
+
                     }
 
                 });
