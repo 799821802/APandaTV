@@ -5,4 +5,124 @@
     <string name="rolling_video">熊猫文化</string>
     <string name="panda_broadcast">熊猫观察</string>
     <string name="live_china">直播中国</string>
+    <string name="tablayout_live">直播</string>
+    <string name="Marvellous_one">精彩一刻</string>
+    <string name="let_panda">当熊不让</string>
+    <string name="lovely">超萌滚滚秀</string>
+    <string name="panda_archives">熊猫档案</string>
+    <string name="panda_top">熊猫TOP</string>
+    <string name="panda_things">熊猫那些事儿</string>
+    <string name="especially_progress">特别节目</string>
+    <string name="original_news">原创新闻</string>
+    <string name="Premiere_time">首播时间</string>
+
+    <!--登录-->
+    <string name="login_weinxin">微信</string>
+    <string name="login_qq">QQ</string>
+    <string name="login_sina">微博</string>
+    <string name="login_tips">使用社交账号登录到熊猫频道</string>
+    <string name="login_cntv">CNTV通行证</string>
+    <string name="login_forgetpaswd">忘记密码</string>
+    <string name="login_btn">登录</string>
+    <string name="login_regist">注册</string>
+    <string name="login_account_hint">账号：请输入邮箱或手机号</string>
+    <string name="login_password_hint">请输入密码</string>
+
+    <!--设置-->
+    <string name="set_general">常用功能</string>
+    <string name="set_push">是否接受消息推送</string>
+    <string name="set_play_next">自动播放下一集</string>
+    <string name="set_clear_cash">清除缓存</string>
+    <string name="set_other">其他</string>
+    <string name="set_userbackandhelp">用户反馈及帮助</string>
+    <string name="set_language">语言</string>
+    <string name="set_language_chinese">简体中文</string>
+    <string name="set_language_english">English</string>
+    <string name="set_language_system">系统</string>
+    <string name="set_check_update">检测升级</string>
+    <string name="set_check_newversion">已检测到新版本，是否升级？</string>
+    <string name="set_confirm_clear_cache">确认清除缓存吗?</string>
+    <string name="set_push_tips">推送提示</string>
+    <string name="set_is_open_push">是否开启推送？</string>
+    <string name="set_great">喜欢我们,给我好评</string>
+    <string name="set_about_panda">关于熊猫频道</string>
+    <string name="set_back_title">用户反馈</string>
+    <string name="set_back_myquestion">遇到的问题</string>
+    <string name="set_back_commonquestion">常见问题</string>
+    <string name="set_back_email">请输入您的邮箱，方便我们及时给您回复</string>
+    <string name="set_back_commit">提交</string>
+    <string name="set_back_liulan">请留下您的宝贵意见</string>
+    <string name="set_back_question1">功能异常</string>
+    <string name="set_back_question2">内容问题</string>
+    <string name="set_back_question3">界面优化</string>
+    <string name="set_back_question4">视频播放</string>
+    <string name="set_back_question5">显示异常</string>
+    <string name="set_back_question6">其他建议</string>
+    <string name="set_about_version">熊猫频道V1.0.0</string>
+    <string name="set_about_content">熊猫频道以24小时直播中国名山大川、自然风光以及熊猫、金丝猴等世界珍稀动物为特色，以CCTV电视节目资源为基础，旨在打造一个传播中国声音、讲好中国故事、展示中国文化独特魅力的中国频道，充分满足海外华人以及喜爱中国文化的外国人的需求，最终建成以视频为特色的中国互联网大百科。现阶段主要开设有《熊猫观察》、《熊猫直播》、《直播中国》、《熊猫文化》等特色栏目。</string>
+
+
+    <!--注册-->
+    <string name="regist">注册</string>
+    <string name="regist_phone">手机注册</string>
+    <string name="regist_email">邮箱注册</string>
+    <string name="regist_phone_tips">海外用户暂不支持手机号注册，您可以使用邮箱注册</string>
+    <string name="forget_image_yanzhengma">获取验证码</string>
+    <string name="regist_protorcal">我已阅读并同意《央视网网络服务使用协议》</string>
+    <string name="regist_email_tips">邮箱注册需要激活后才能登录</string>
+    <string name="regist_phone_account_hint">账号：请输入手机账号</string>
+    <string name="regist_email_account_hint">账号：请输入邮箱</string>
+    <string name="regist_phone_paswd_hint">请输入密码</string>
+    <string name="regist_confirm_paswd">请确认密码</string>
+    <string name="regist_sendmessage_again">重新获取</string>
+    <string name="regist_tips">请输入手机号码</string>
+    <string name="forget_img_yanzhengma_hint">请输入获取到的验证码</string>
+    <string name="regist_error_tips">图片验证码输入有误</string>
+    <string name="regist_nullphonenumber_tips">手机号码不能为空</string>
+    <string name="regist_phone_reg_error">手机号格式不正确</string>
+    <string name="regist_null_paswd_tips">密码不能为空</string>
+    <string name="regist_null_comfirm_paswd">确认密码不能为空</string>
+    <string name="regist_paswd_differ">密码不一致</string>
+    <string name="regist_email_null">邮箱不能为空</string>
+    <string name="regist_email_error">邮箱格式不正确</string>
+    <string name="regist_paswd_reg">密码仅限6-16个字符</string>
+    <string name="regist_yanzhengma_null">验证码不能为空</string>
+    <string name="regist_yanzhengma_error">验证码不正确</string>
+    <string name="regist_account_null">邮箱/手机号不能为空</string>
+    <string name="regist_account_error">邮箱/手机格式不正确</string>
+    <string name="regist_not_checked">未勾选《央视网网络服务使用协议》</string>
+    <string name="regist_email_success">请到您的邮箱激活账号后登录，是否现在去邮箱激活</string>
+
+    <!-- 修改昵称、头像 -->
+    <string name="save">保存</string>
+    <string name="change_nickname">修改昵称</string>
+    <string name="photo_select">从手机相册选择</string>
+    <string name="photo_make">拍一张</string>
+    <string name="photo_cancle">取消</string>
+    <string name="editnickname_tips">用户昵称只能为汉字、字母、数字、下划线组成;长度为3-10个汉字(6-20个非汉字字符);不能为空;不能有禁词;敏感词;不能重复</string>
+    <string name="change_nickname_tips">您的昵称已提交审核\n\n请稍后回来确认吧</string>
+    <string name="change_photo_tips">您的头像已提交审核\n\n请稍后回来确认吧</string>
+    <string name="change_nickname_sure">我知道啦</string>
+    <string name="login_cookies">您的登录已过期，请重新登录</string>
+    <string name="whatch_photo">"熊猫频道"想访问您的相册</string>
+    <string name="whatch_camera">"熊猫频道"想访问您的相机</string>
+    <string name="watch_photo_ok">好</string>
+    <string name="watch_photo_no">不允许</string>
+    <string name="tip_null"></string>
+    <string name="login_faile">您的登录已过期，请重新登录</string>
+    <string name="request_faile_tips">服务器连接失败，请重试</string>
+
+
+
+    <string name="problem1">1.观看熊猫频道视频对手机网络有什么要求</string>
+    <string name="problem2">建议您在有WiFi的情况下观看视频，不建议您在2G网络下观看视频熊猫频道可以对您的联网类型进行自动识别，当您在3G、4G情况下观看视频时，手机会自动提示您在使用数据流量环境下观看视频，可能会产生高额费用，是否继续观看。</string>
+    <string name="problem3">2.如何清除缓存</string>
+    <string name="problem4">在“个人中心”页面里点击“设置”，在设置页面里选择“清除缓存”。</string>
+    <string name="problem5">3.如何进行版本更新</string>
+    <string name="problem6">新版本更新以后，用户首次启动客户端，会自动接收到升级提示。点击“升级”即可。IOS用户手机自动跳转至AppStore下载页面，Android用户手机自动后台下载更新。</string>
+    <string name="problem7">4.启动或使用时闪退该怎么办？</string>
+    <string name="problem8">登录或使用熊猫频道时出现闪退，可能是手机运行空间不足或软件数据包丢失导致，请您尝试重启手机或卸载软件后，下载安装最新版本使用。</string>
+    <string name="problem9">5.我有问题，如何反馈？</string>
+    <string name="problem10">在“个人中心”页面里点击 “设置”，在设置页面里选择“用户反馈及帮助”。根据页面提示提交反馈，我们收到后将及时处理。</string>
+
 </resources>

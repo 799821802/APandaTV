@@ -27,6 +27,7 @@
         <activity android:name="apandatv.base.BaseActivity" />
         <activity android:name="apandatv.activity.WebActivity"/>
         <activity android:name="apandatv.ui.module.interactive.InteractiveActivity"></activity>
+        <activity android:name="apandatv.activity.reginstered.RegisteredActivity" />
     </application>
 
 </manifest>
