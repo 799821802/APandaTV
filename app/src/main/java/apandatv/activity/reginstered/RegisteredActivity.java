@@ -9,7 +9,7 @@ import apandatv.base.BaseActivity;
  * 注册
  *
  */
-
+//
 public class RegisteredActivity extends BaseActivity implements RegistereContart.View {
    private RegistereContart.Presenter presenter;
 

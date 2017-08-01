@@ -7,7 +7,7 @@ import apandatv.base.BaseFragment;
 /**
  * Created by Administrator on 2017/8/1.
  */
-
+//
 public class PhoneRegistrationActivity extends BaseFragment{
     @Override
     protected int getLayoutId() {
