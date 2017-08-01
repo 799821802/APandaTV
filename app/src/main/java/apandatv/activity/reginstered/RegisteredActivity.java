@@ -11,8 +11,11 @@ import apandatv.base.BaseActivity;
  */
 
 public class RegisteredActivity extends BaseActivity implements RegistereContart.View {
+   private RegistereContart.Presenter presenter;
+
     @Override
     protected int getLayoutId() {
+        new RegisterePresenter(this);
         return R.layout.activity_registered;
     }
 
@@ -33,6 +36,6 @@ public class RegisteredActivity extends BaseActivity implements RegistereContart
 
     @Override
     public void setPresenter(RegistereContart.Presenter presenter) {
-
+        this.presenter=presenter;
     }
 }

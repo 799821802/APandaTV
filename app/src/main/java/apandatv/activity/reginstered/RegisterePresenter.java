@@ -5,6 +5,18 @@ package apandatv.activity.reginstered;
  */
 
 public class RegisterePresenter implements RegistereContart.Presenter {
+
+    private RegistereContart.View view;
+
+    public RegisterePresenter(RegistereContart.View view) {
+
+        this.view = view;
+        view.setPresenter(this);
+
+
+    }
+
+
     @Override
     public void start() {
 

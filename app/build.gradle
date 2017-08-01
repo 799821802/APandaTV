@@ -49,5 +49,5 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.8.0'
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.androidkun:pulltorefreshrecyclerview:1.0.6'
-    compile project(':mylibrary')
+    compile project(':mylibrarys')
 }

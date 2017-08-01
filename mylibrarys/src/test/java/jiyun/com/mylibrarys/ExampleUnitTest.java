@@ -1,4 +1,4 @@
-package jiyun.com.mylibrary;
+package jiyun.com.mylibrarys;
 
 import org.junit.Test;
 

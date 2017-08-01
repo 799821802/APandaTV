@@ -1,6 +1,5 @@
 package apandatv.activity;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -63,8 +62,8 @@ public class PersonalcenterActivity extends BaseActivity {
             case R.id.dianjilogin:
                 break;
             case R.id.linear1:
-                Intent intent = new Intent(PersonalcenterActivity.this,LoginActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(PersonalcenterActivity.this,LoginActivity.class);
+//                startActivity(intent);
 
                 break;
             case R.id.linear2:

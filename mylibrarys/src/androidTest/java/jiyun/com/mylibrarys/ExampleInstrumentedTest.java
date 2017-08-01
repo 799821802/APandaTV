@@ -1,4 +1,4 @@
-package jiyun.com.mylibrary;
+package jiyun.com.mylibrarys;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("jiyun.com.mylibrary.test", appContext.getPackageName());
+        assertEquals("jiyun.com.mylibrarys.test", appContext.getPackageName());
     }
 }
