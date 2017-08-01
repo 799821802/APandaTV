@@ -2,14 +2,12 @@
 //
 //import android.app.ProgressDialog;
 //import android.view.View;
-//import android.widget.EditText;
-//import android.widget.ImageView;
 //import android.widget.LinearLayout;
-//import android.widget.TextView;
 //
 //import com.jiyun.apandatv.R;
 //
 //import apandatv.base.BaseActivity;
+//import butterknife.OnClick;
 ////import butterknife.BindView;
 ////import butterknife.OnClick;
 //
