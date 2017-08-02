@@ -13,4 +13,9 @@ public class Keys {
     //图片验证码
     public static final String IMGCODE = "imgCode";
 
+    public static final String WEBKEY = "url";
+    public static final String VIDEO_IMG = "img";
+    public static final String VIDEO_TITLE = "title";
+    public static final String VIDEO_PID = "pid";
+
 }

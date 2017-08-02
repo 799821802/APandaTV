@@ -1,5 +1,6 @@
 package apandatv.ui.module.mine.activity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Message;
@@ -16,8 +17,10 @@ import com.jiyun.apandatv.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import apandatv.ui.module.playvideo.VideoplayerActivity;
 import apandatv.app.App;
 import apandatv.base.BaseActivity;
+import apandatv.config.Keys;
 import apandatv.model.db.dbhistroy.DaoMaster;
 import apandatv.model.db.dbhistroy.DaoSession;
 import apandatv.model.db.dbhistroy.MyHistroy;
@@ -30,6 +33,7 @@ import static com.jiyun.apandatv.R.id.all_button;
 
 /**
  * Created by lenovo on 2017/8/1.
+ * 历史记录
  */
 
 public class HistroyActivity extends BaseActivity {
@@ -74,12 +78,12 @@ public class HistroyActivity extends BaseActivity {
     @Override
     protected void init() {
 
-//        greedao = getGreendao();
-//        list = greedao.queryBuilder().list();
-//        his_list.addAll(list);
+        greedao = getGreendao();
+        list = greedao.queryBuilder().list();
+        his_list.addAll(list);
 
-        MyHistroy myHistroy = new MyHistroy(100l,"","熊猫宝宝首次独立度夏 靠冰块消暑","2017-07-24 10:00","");
-        his_list.add(myHistroy);
+//        MyHistroy myHistroy = new MyHistroy(100l,"","熊猫宝宝首次独立度夏 靠冰块消暑","2017-07-24 10:00","");
+//        his_list.add(myHistroy);
         historicalRecycler.setLayoutManager(new LinearLayoutManager(App.context));
         h_adapter = new HistoricalAdapter(App.context, his_list);
         historicalRecycler.setAdapter(h_adapter);
@@ -102,11 +106,11 @@ public class HistroyActivity extends BaseActivity {
                         deleteButton.setText("删除");
                     }
                 }else{
-//                    Intent inten = new Intent(HistroyActivity.this,VideoplayerActivity.class);
-//                    inten.putExtra("pid", his_list.get(postion).getMoviepath());
-//                    inten.putExtra("video_title", his_list.get(postion).getName());
-//                    inten.putExtra("video_imag", his_list.get(postion).getImagpath());
-//                    startActivity(inten);
+                    Intent inten = new Intent(HistroyActivity.this,VideoplayerActivity.class);
+                    inten.putExtra(Keys.VIDEO_PID, his_list.get(postion).getMoviepath());
+                    inten.putExtra(Keys.VIDEO_TITLE, his_list.get(postion).getName());
+                    inten.putExtra(Keys.VIDEO_IMG, his_list.get(postion).getImagpath());
+                    startActivity(inten);
                 }
                 handler.sendEmptyMessage(300);
             }
@@ -144,7 +148,7 @@ public class HistroyActivity extends BaseActivity {
             for (int i = his_list.size() - 1; i >= 0; i--) {
                 if (his_list.get(i).isFlg_bulen()) {
 
-//                    greedao.delete(his_list.get(i));
+                    greedao.delete(his_list.get(i));
                     his_list.remove(i);
                 }
             }

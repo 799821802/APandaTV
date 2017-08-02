@@ -21,6 +21,16 @@ import apandatv.model.entity.HomeCctvBean;
 
 public class HomeCctvAdapter extends RecyclerView.Adapter {
 
+
+    public interface CCTV_live_Onclick{
+        void  get_cctv_live(View view,int cctv_postion);
+    }
+    private CCTV_live_Onclick cctv_live_onclick;
+
+    public void set_China_live_click(CCTV_live_Onclick cctv_live_onclick){
+        this.cctv_live_onclick=cctv_live_onclick;
+    }
+
     private Context context;
     private List<HomeCctvBean.ListBean> listBeen;
 
@@ -60,6 +70,12 @@ public class HomeCctvAdapter extends RecyclerView.Adapter {
 
             img = (ImageView) itemView.findViewById(R.id.homecctv_item_img);
             title = (TextView) itemView.findViewById(R.id.homecctv_item_title);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cctv_live_onclick.get_cctv_live(v,getAdapterPosition());
+                }
+            });
         }
     }
 }

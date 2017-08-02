@@ -31,6 +31,9 @@
         <activity android:name="apandatv.ui.module.mine.activity.PersonalcenterActivity"/>
         <activity android:name="apandatv.ui.module.mine.activity.HistroyActivity"/>
         <activity android:name="apandatv.ui.module.mine.activity.CollectionActivity"/>
+        <activity android:name="apandatv.ui.module.playvideo.VideoplayerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"/>
 
         <activity android:name="apandatv.ui.module.mine.activity.reginsterefragment.registered.RegisteredActivity" />
         <activity android:name="apandatv.ui.module.mine.activity.LoginActivity"></activity>

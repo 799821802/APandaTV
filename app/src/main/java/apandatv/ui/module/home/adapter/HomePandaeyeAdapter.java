@@ -21,6 +21,19 @@ import apandatv.net.HttpFactroy;
 
 public class HomePandaeyeAdapter extends RecyclerView.Adapter {
 
+    public interface Look_dow_Onclick {
+
+        void  get_look_dow_Onclick(View view, int lok_down_postion);
+
+    }
+
+    private Look_dow_Onclick look_dow_onclick;
+
+    public void set_Look_dow_getOnclick(Look_dow_Onclick look_dow_onclick) {
+        this.look_dow_onclick = look_dow_onclick;
+
+    }
+
     private Context context;
     private List<HomePandaeyeBean.ListBean> look_down_array;
 
@@ -45,7 +58,14 @@ public class HomePandaeyeAdapter extends RecyclerView.Adapter {
         my_view.data.setText(look_down_array.get(position).getDaytime());
         my_view.time.setText(look_down_array.get(position).getVideoLength());
         HttpFactroy.create().loadImage(look_down_array.get(position).getImage(),my_view.imageView);
+        my_view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                look_dow_onclick.get_look_dow_Onclick(v,position);
+
+            }
+        });
     }
 
     @Override

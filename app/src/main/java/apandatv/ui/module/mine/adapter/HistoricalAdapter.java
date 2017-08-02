@@ -9,13 +9,13 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.jiyun.apandatv.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import apandatv.model.db.dbhistroy.MyHistroy;
+import apandatv.net.HttpFactroy;
 
 
 /**
@@ -73,7 +73,7 @@ public class HistoricalAdapter extends RecyclerView.Adapter {
             my_view.radioButton.setChecked(false);
         }
 
-        Glide.with(content).load(his_array.get(position).getImagpath()).into(my_view.imageView);
+        HttpFactroy.create().loadImage(his_array.get(position).getImagpath(),my_view.imageView);
 
         my_view.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
