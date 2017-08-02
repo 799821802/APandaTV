@@ -1,4 +1,4 @@
-package apandatv.activity;
+package apandatv.ui.module.mine.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,8 +20,8 @@ import com.umeng.socialize.utils.SocializeUtils;
 import java.util.ArrayList;
 import java.util.Map;
 
-import apandatv.activity.forgetpassword.ForgetPasswordActivity;
-import apandatv.activity.reginstered.reginstere_fragment.registered.RegisteredActivity;
+import apandatv.ui.module.mine.activity.forgetpassword.ForgetPasswordActivity;
+import apandatv.ui.module.mine.activity.reginsterefragment.registered.RegisteredActivity;
 import apandatv.app.App;
 import apandatv.base.BaseActivity;
 import apandatv.model.biz.loginandregin.ReginsModelImpl;

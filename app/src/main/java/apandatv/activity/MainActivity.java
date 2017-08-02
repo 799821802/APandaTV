@@ -16,6 +16,7 @@ import apandatv.ui.module.home.HomeFragment;
 import apandatv.ui.module.home.HomePresenter;
 import apandatv.ui.module.interactive.InteractiveActivity;
 import apandatv.ui.module.livechina.LiveChinaFragment;
+import apandatv.ui.module.mine.activity.PersonalcenterActivity;
 import apandatv.ui.module.pandaculture.PandaCultureFragment;
 import apandatv.ui.module.pandaeye.PandaEyeFragment;
 import apandatv.ui.module.pandalive.PandaLiveFragment;

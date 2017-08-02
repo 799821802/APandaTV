@@ -1,4 +1,4 @@
-package apandatv.activity.customerfeedback;
+package apandatv.ui.module.mine.activity.customerfeedback;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;

@@ -25,22 +25,22 @@
         </activity>
         <activity android:name="apandatv.activity.MainActivity" />
         <activity android:name="apandatv.base.BaseActivity" />
-        <activity android:name="apandatv.activity.WebActivity"/>
+        <activity android:name="apandatv.ui.module.mine.activity.WebActivity"/>
         <activity android:name="apandatv.ui.module.interactive.InteractiveActivity"></activity>
         <activity android:name="apandatv.activity.reginstered.RegisteredActivity" />
-        <activity android:name="apandatv.activity.PersonalcenterActivity"/>
+        <activity android:name="apandatv.ui.module.mine.activity.PersonalcenterActivity"/>
         <activity android:name="apandatv.ui.module.mine.activity.HistroyActivity"/>
         <activity android:name="apandatv.ui.module.mine.activity.CollectionActivity"/>
 
-        <activity android:name="apandatv.activity.reginstered.reginstere_fragment.registered.RegisteredActivity" />
-        <activity android:name="apandatv.activity.LoginActivity"></activity>
-        <activity android:name="apandatv.activity.PersonalcenterActivity"></activity>
-        <activity android:name="apandatv.activity.SetupActivity"></activity>
-        <activity android:name="apandatv.activity.PersonAboutActivity"></activity>
-        <activity android:name="apandatv.activity.PersonalinformationActivity" />
-        <activity android:name="apandatv.activity.PersonalinformationActivity"></activity>
-        <activity android:name="apandatv.activity.PersonalNickNameActivity"></activity>
-        <activity android:name="apandatv.activity.forgetpassword.ForgetPasswordActivity"></activity>
+        <activity android:name="apandatv.ui.module.mine.activity.reginsterefragment.registered.RegisteredActivity" />
+        <activity android:name="apandatv.ui.module.mine.activity.LoginActivity"></activity>
+        <activity android:name="apandatv.ui.module.mine.activity.PersonalcenterActivity"></activity>
+        <activity android:name="apandatv.ui.module.mine.activity.SetupActivity"></activity>
+        <activity android:name="apandatv.ui.module.mine.activity.PersonAboutActivity"></activity>
+        <activity android:name="apandatv.ui.module.mine.activity.PersonalinformationActivity" />
+        <activity android:name="apandatv.ui.module.mine.activity.PersonalinformationActivity"></activity>
+        <activity android:name="apandatv.ui.module.mine.activity.PersonalNickNameActivity"></activity>
+        <activity android:name="apandatv.ui.module.mine.activity.forgetpassword.ForgetPasswordActivity"></activity>
 
     </application>
 

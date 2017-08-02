@@ -1,4 +1,4 @@
-package apandatv.activity;
+package apandatv.ui.module.mine.activity;
 
 import android.webkit.WebSettings;
 import android.webkit.WebView;

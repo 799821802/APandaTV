@@ -13,7 +13,7 @@ import com.jiyun.apandatv.R;
 
 import java.util.List;
 
-import apandatv.activity.WebActivity;
+import apandatv.ui.module.mine.activity.WebActivity;
 import apandatv.model.entity.MyInteractiveBean;
 
 /**

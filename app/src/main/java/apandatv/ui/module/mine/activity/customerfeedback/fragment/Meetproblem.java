@@ -1,4 +1,4 @@
-package apandatv.activity.customerfeedback.fragment;
+package apandatv.ui.module.mine.activity.customerfeedback.fragment;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package apandatv.activity.forgetpassword;
+package apandatv.ui.module.mine.activity.forgetpassword;
 
 import com.jiyun.apandatv.R;
 
