@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.umeng.message.PushAgent;
+
 import apandatv.app.App;
 import butterknife.ButterKnife;
 
@@ -25,6 +27,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         init();
+
+        PushAgent.getInstance(this).onAppStart();
+
     }
 
     protected abstract int getLayoutId();

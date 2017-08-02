@@ -169,15 +169,6 @@ public class OkHttpUtils implements IHttp {
     @Override
     public <T> void post(String url, Map<String, String> params, final MyNetCallback<T> callback) {
 
-//        FormBody.Builder builder = new FormBody.Builder();
-//        if(params !=null && params.size() > 0){
-//            Set<String> keys = params.keySet();
-//            for (String key : keys) {
-//                String value = params.get(key);
-//                builder.add(key,value);
-//            }
-//        }
-//        Request request = new Request.Builder().url(url).post(builder.build()).build();
         StringBuffer sb=new StringBuffer(url);
         if (params !=null && params.size()>0){
             sb.append("?");
