@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.jiyun.apandatv.R;
 
 import apandatv.base.BaseActivity;
+import apandatv.ui.module.mine.activity.CollectionActivity;
+import apandatv.ui.module.mine.activity.HistroyActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -71,9 +73,10 @@ public class PersonalcenterActivity extends BaseActivity {
                 startActivityForResult(new Intent(PersonalcenterActivity.this, LoginActivity.class),0);
                 break;
             case R.id.linear2:
-
+                startActivityForResult(new Intent(PersonalcenterActivity.this, HistroyActivity.class),0);
                 break;
             case R.id.linear3:
+                startActivityForResult(new Intent(PersonalcenterActivity.this, CollectionActivity.class),0);
                 break;
             case R.id.linear4:
                 Intent intent = new Intent(PersonalcenterActivity.this,SetupActivity.class);

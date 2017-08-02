@@ -53,5 +53,5 @@ public class Urls {
 
     public static final String ROLLVIDEO = "http://www.ipanda.com/kehuduan/xmwh/index.json ";
     //视频播放
-    public static final String TV_Url = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
+    public static final String TV_Url = "http://115.182.9.189/api/getVideoInfoForCBox.do";
 }

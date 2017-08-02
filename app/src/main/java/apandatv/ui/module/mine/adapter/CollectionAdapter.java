@@ -9,12 +9,12 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.jiyun.apandatv.R;
 
 import java.util.List;
 
 import apandatv.model.db.dbcollection.MyCollection;
+import apandatv.net.HttpFactroy;
 
 /**
  * Created by lenovo on 2017/8/1.
@@ -32,12 +32,13 @@ public class CollectionAdapter extends  RecyclerView.Adapter {
 
     }
     public interface Onclick {
+
         void get_Onclick(View view, int postion);
     }
 
-    private HistoricalAdapter.Onclick oclick;
+    private Onclick oclick;
 
-    public void set_Onclick(HistoricalAdapter.Onclick oclick) {
+    public void set_Onclick(Onclick oclick) {
         this.oclick = oclick;
 
     }
@@ -56,7 +57,9 @@ public class CollectionAdapter extends  RecyclerView.Adapter {
         my_view.title.setText(collection_array.get(position).getName());
         my_view.data.setText(collection_array.get(position).getData());
 
+
         if (collection_array.get(position).isFlg() == true) {
+
 
             my_view.radioButton.setVisibility(View.VISIBLE);
 
@@ -71,7 +74,7 @@ public class CollectionAdapter extends  RecyclerView.Adapter {
             my_view.radioButton.setChecked(false);
         }
 
-        Glide.with(content).load(collection_array.get(position).getImagpath()).into(my_view.imageView);
+        HttpFactroy.create().loadImage(collection_array.get(position).getImagpath(),my_view.imageView);
 
         my_view.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

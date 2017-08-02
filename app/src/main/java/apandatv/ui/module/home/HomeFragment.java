@@ -3,6 +3,7 @@ package apandatv.ui.module.home;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -11,7 +12,7 @@ import com.jiyun.apandatv.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import apandatv.activity.VideoplayerActivity;
+import apandatv.ui.module.playvideo.VideoplayerActivity;
 import apandatv.activity.WebActivity;
 import apandatv.base.BaseFragment;
 import apandatv.config.Keys;
@@ -127,12 +128,12 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
 
             @Override
             public void getOnwonderfulClick(PandaHome.DataBean.AreaBean.ListscrollBean home_data) {
-                ToastManager.show("2");
 
                 insertGreendao(new MyHistroy(null,home_data.getImage(),home_data.getTitle(),home_data.getOrder(),home_data.getPid()));
                 Intent intent = new Intent(getContext(), VideoplayerActivity.class);
                 intent.putExtra(Keys.VIDEO_IMG,home_data.getImage());
-                intent.putExtra(Keys.VIDEO_PID,home_data.getVid());
+                intent.putExtra(Keys.VIDEO_PID,home_data.getPid());
+                Log.e("tag===home_data.getPid()",home_data.getPid());
                 intent.putExtra(Keys.VIDEO_TITLE,home_data.getTitle());
 
                 startActivity(intent);
@@ -159,28 +160,31 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
             @Override
             public void getOnPandaneyedownClick(HomePandaeyeBean.ListBean look_down_text) {
                 ToastManager.show("5");
-                String pid = look_down_text.getPid();
+                String pid =  look_down_text.getPid();
                 String img = look_down_text.getImage();
                 String title = look_down_text.getTitle();
                 String time =look_down_text.getOrder();
                 insertGreendao(new MyHistroy(null,img,title,time,pid));
                 Intent intent = new Intent(getContext(), VideoplayerActivity.class);
+                intent.putExtra(Keys.VIDEO_IMG,img);
+                intent.putExtra(Keys.VIDEO_PID,pid);
+                intent.putExtra(Keys.VIDEO_TITLE,title);
                 startActivity(intent);
             }
 
             @Override
             public void getOnPandaliveClick(PandaHome.DataBean.PandaliveBean.ListBean pandalivebean) {
-//                ToastManager.show("6");
+//                ToastManager.show("熊猫直播");
             }
 
             @Override
             public void getOnWallliveClick(PandaHome.DataBean.WallliveBean.ListBeanX listBeanX) {
-//                ToastManager.show("7");
+//                ToastManager.show("长城直播");
             }
 
             @Override
             public void getOnchinaliveClick(PandaHome.DataBean.ChinaliveBean.ListBeanXX listBeanXX) {
-//                ToastManager.show("8");
+//                ToastManager.show("直播中国");
             }
 
             @Override

@@ -1,17 +1,29 @@
-package apandatv.activity;
+package apandatv.ui.module.playvideo;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.GestureDetector;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.jiyun.apandatv.R;
 import com.umeng.socialize.UMShareAPI;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import apandatv.base.BaseActivity;
 import apandatv.config.Keys;
+import apandatv.model.db.dbcollection.DaoMaster;
+import apandatv.model.db.dbcollection.DaoSession;
+import apandatv.model.db.dbcollection.MyCollection;
+import apandatv.model.db.dbcollection.MyCollectionDao;
 import apandatv.model.entity.VideoPlayerBean;
+import apandatv.widget.manager.ToastManager;
 import apandatv.widget.view.CustomDialog;
 import butterknife.BindView;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
@@ -39,11 +51,16 @@ public class VideoplayerActivity extends BaseActivity implements VideoPlayContra
     JCVideoPlayerStandard jcVideo;
     private String video_title,img,pid;
     private VideoPlayContract.Presenter presenter;
+    private String url;
 
-    private ArrayList<VideoPlayerBean.VideoBean.Chapters4Bean> biaoqing_array = new ArrayList();
+    private List<VideoPlayerBean.VideoBean.Chapters2Bean> biaoqing_array = new ArrayList<>();
     private ArrayList<VideoPlayerBean.VideoBean.ChaptersBean> gaoqing_array = new ArrayList();
     @Override
     protected int getLayoutId() {
+        if(getRequestedOrientation()!= ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+        new VideoPlayPresenter(this);
         return R.layout.activity_videoplay;
 
     }
@@ -55,18 +72,12 @@ public class VideoplayerActivity extends BaseActivity implements VideoPlayContra
         video_title = intent.getStringExtra(Keys.VIDEO_TITLE);
         img = intent.getStringExtra(Keys.VIDEO_IMG);
         pid = intent.getStringExtra(Keys.VIDEO_PID);
-        new VideoPlayPresenter(pid,this);
 
-        play();
         presenter.showPid(pid);
         presenter.start();
-    }
-
-    private void play() {
-        jcVideo.setUp(s
-                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "====");
 
     }
+
 
 
     @Override
@@ -78,66 +89,90 @@ public class VideoplayerActivity extends BaseActivity implements VideoPlayContra
     public void videoCollection() {
 
     }
-
-    String s = "http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4";
+//    String s = "http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4";
     @Override
     public void getVideoBean(final VideoPlayerBean videoPlayerBean) {
 
-//        LogUtils.e("TAG",videoPlayerBean.getVideo().getChapters3().size()+"-=-=-=-=-=-=-=");
-//        biaoqing_array.addAll(videoPlayerBean.getVideo().getChapters4());
-////        jcVideo.setUp(biaoqing_array.get(0).getUrl()
-//                jcVideo.setUp(s
-//                , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "====");
-//        HttpFactroy.create().loadImage(video_title,jcVideo.thumbImageView);
-////             高清地址
-//        List<VideoPlayerBean.VideoBean.ChaptersBean> chapters = videoPlayerBean.getVideo().getChapters();
-//        gaoqing_array.addAll(chapters);
-//
-//        jcVideo.setMonitor(new JCVideoPlayerStandard.imgClickon() {
-//            @Override
-//            public void Share(View view) {
-//                share();
-//            }
-//
-//            @Override
-//            public void CollectionMonitor(CompoundButton compoundButton, boolean b) {
-//                boolean checked = compoundButton.isChecked();
-//
-//                if(checked == true) {
-//                    Toast.makeText(VideoplayerActivity.this, "已添加至收藏", Toast.LENGTH_SHORT).show();
-//
-//
-//                }else{
-//                    Toast.makeText(VideoplayerActivity.this, "已取消至收藏", Toast.LENGTH_SHORT).show();
-//                }
-//
-//            }
-//
-//            @Override
-//            public void WatchthelistMonitor(View view) {
-//
-//                ToastManager.show("列表");
-//            }
-//
-//            @Override
-//            public void setgq() {
-//                jcVideo.setUp(gaoqing_array.get(0).getUrl()
-//                        , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoPlayerBean.getTitle());
-//                Glide.with(VideoplayerActivity.this)
-//                        .load(gaoqing_array.get(0).getImage())
-//                        .into(jcVideo.thumbImageView);
-//            }
-//
-//            @Override
-//            public void setbq() {
-//
-//            }
-//        });
+        biaoqing_array.addAll(videoPlayerBean.getVideo().getChapters2());
+        url = biaoqing_array.get(0).getUrl();
+        jcVideo.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,video_title);
+        jcVideo.startVideo();
+//             高清地址
+        List<VideoPlayerBean.VideoBean.ChaptersBean> chapters = videoPlayerBean.getVideo().getChapters();
+        gaoqing_array.addAll(chapters);
+
+        jcVideo.setMonitor(new JCVideoPlayerStandard.imgClickon() {
+            @Override
+            public void Share(View view) {
+                share();
+            }
+
+            @Override
+            public void CollectionMonitor(CompoundButton compoundButton, boolean b) {
+                boolean checked = compoundButton.isChecked();
+
+                if(checked == true) {
+
+                    Toast.makeText(VideoplayerActivity.this, "已添加至收藏", Toast.LENGTH_SHORT).show();
+                    insertGreendao(new MyCollection(null,img,video_title,"",pid));
+
+
+                }else{
+                    Toast.makeText(VideoplayerActivity.this, "已取消至收藏", Toast.LENGTH_SHORT).show();
+                    deleteGreendao(new MyCollection(null,img,video_title,"",pid));
+                }
+
+            }
+
+            @Override
+            public void WatchthelistMonitor(View view) {
+
+                ToastManager.show("列表");
+            }
+
+            @Override
+            public void setgq() {
+                jcVideo.setUp(gaoqing_array.get(0).getUrl()
+                        , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoPlayerBean.getTitle());
+                Glide.with(VideoplayerActivity.this)
+                        .load(gaoqing_array.get(0).getImage())
+                        .into(jcVideo.thumbImageView);
+            }
+
+            @Override
+            public void setbq() {
+
+            }
+        });
+    }
+
+    @Override
+    public MyCollectionDao getGreendao() {
+
+        DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(this,"Collection.db",null);
+        SQLiteDatabase database =  helper.getWritableDatabase();
+        DaoMaster master = new DaoMaster(database);
+        DaoSession session = master.newSession();
+        MyCollectionDao collectionDao = session.getMyCollectionDao();
+        return collectionDao;
+    }
+
+    @Override
+    public void insertGreendao(MyCollection myCollection) {
+
+        MyCollectionDao myCollectionDao = getGreendao();
+        myCollectionDao.insert(myCollection);
+
+    }
+
+    @Override
+    public void deleteGreendao(MyCollection myCollection) {
+        MyCollectionDao myCollectionDao = getGreendao();
+        myCollectionDao.delete(myCollection);
     }
 
     @Override
     public void showProgress() {
-
         CustomDialog.getInsent().show(this);
     }
 
@@ -185,6 +220,14 @@ public class VideoplayerActivity extends BaseActivity implements VideoPlayContra
 //                        Log.e("TAG", "onCancel");
 //                    }
 //                }).open();
+    }
+
+    @Override
+    protected void onResume() {
+        if(getRequestedOrientation()!= ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+        super.onResume();
     }
 
     @Override

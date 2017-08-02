@@ -17,8 +17,8 @@ public class VideoPlayModelImpl implements VideoPlayModel {
 
 
         Map<String,String> map = new HashMap<>();
-
-        iHttp.get(Urls.TV_Url+pid,map,callback);
+        map.put("pid",pid);
+        iHttp.get(Urls.TV_Url,map,callback);
 
     }
 }

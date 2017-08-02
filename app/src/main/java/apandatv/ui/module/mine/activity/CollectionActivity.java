@@ -1,5 +1,6 @@
 package apandatv.ui.module.mine.activity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Message;
@@ -16,14 +17,15 @@ import com.jiyun.apandatv.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import apandatv.ui.module.playvideo.VideoplayerActivity;
 import apandatv.app.App;
 import apandatv.base.BaseActivity;
+import apandatv.config.Keys;
 import apandatv.model.db.dbcollection.DaoMaster;
 import apandatv.model.db.dbcollection.DaoSession;
 import apandatv.model.db.dbcollection.MyCollection;
 import apandatv.model.db.dbcollection.MyCollectionDao;
 import apandatv.ui.module.mine.adapter.CollectionAdapter;
-import apandatv.ui.module.mine.adapter.HistoricalAdapter;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -88,16 +90,13 @@ public class CollectionActivity extends BaseActivity {
     protected void init() {
 
         list = selectGreendao();
-//        MyCollection myCollection = new MyCollection(100l,"","熊猫宝宝首次独立度夏 靠冰块消暑","2017-07-24 10:00","");
-//        list.add(myCollection);
         collectionWhatRecycler.setLayoutManager(new LinearLayoutManager(App.context));
         adapter = new CollectionAdapter(App.context, list);
         collectionWhatRecycler.setAdapter(adapter);
 
-        adapter.set_Onclick(new HistoricalAdapter.Onclick() {
+        adapter.set_Onclick(new CollectionAdapter.Onclick() {
             @Override
             public void get_Onclick(View view, int postion) {
-
                 if (collectionBianji.getText().equals("取消")) {
                     if (collection_list.get(postion).isFlg_bulen() == false) {
                         collection_list.get(postion).setFlg_bulen(true);
@@ -112,15 +111,16 @@ public class CollectionActivity extends BaseActivity {
                         collectionDeleteButton.setText("删除");
                     }
                 }else{
-//                    Intent inten = new Intent(HistroyActivity.this,VideoplayerActivity.class);
-//                    inten.putExtra("pid", his_list.get(postion).getMoviepath());
-//                    inten.putExtra("video_title", his_list.get(postion).getName());
-//                    inten.putExtra("video_imag", his_list.get(postion).getImagpath());
-//                    startActivity(inten);
+                    Intent inten = new Intent(CollectionActivity.this,VideoplayerActivity.class);
+                    inten.putExtra(Keys.VIDEO_PID, list.get(postion).getMoviepath());
+                    inten.putExtra(Keys.VIDEO_TITLE, list.get(postion).getName());
+                    inten.putExtra(Keys.VIDEO_IMG, list.get(postion).getImagpath());
+                    startActivity(inten);
                 }
                 handler.sendEmptyMessage(300);
             }
         });
+
     }
 
     @OnClick({R.id.collection_all_button, R.id.collection_delete_button, R.id.collection_return, collection_bianji, R.id.collection_live, R.id.collection_what})

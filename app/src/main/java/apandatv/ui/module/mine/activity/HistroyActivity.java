@@ -1,5 +1,6 @@
 package apandatv.ui.module.mine.activity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Message;
@@ -16,8 +17,10 @@ import com.jiyun.apandatv.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import apandatv.ui.module.playvideo.VideoplayerActivity;
 import apandatv.app.App;
 import apandatv.base.BaseActivity;
+import apandatv.config.Keys;
 import apandatv.model.db.dbhistroy.DaoMaster;
 import apandatv.model.db.dbhistroy.DaoSession;
 import apandatv.model.db.dbhistroy.MyHistroy;
@@ -102,11 +105,11 @@ public class HistroyActivity extends BaseActivity {
                         deleteButton.setText("删除");
                     }
                 }else{
-//                    Intent inten = new Intent(HistroyActivity.this,VideoplayerActivity.class);
-//                    inten.putExtra("pid", his_list.get(postion).getMoviepath());
-//                    inten.putExtra("video_title", his_list.get(postion).getName());
-//                    inten.putExtra("video_imag", his_list.get(postion).getImagpath());
-//                    startActivity(inten);
+                    Intent inten = new Intent(HistroyActivity.this,VideoplayerActivity.class);
+                    inten.putExtra(Keys.VIDEO_PID, his_list.get(postion).getMoviepath());
+                    inten.putExtra(Keys.VIDEO_TITLE, his_list.get(postion).getName());
+                    inten.putExtra(Keys.VIDEO_IMG, his_list.get(postion).getImagpath());
+                    startActivity(inten);
                 }
                 handler.sendEmptyMessage(300);
             }
