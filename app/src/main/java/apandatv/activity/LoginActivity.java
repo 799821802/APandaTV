@@ -21,10 +21,12 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import apandatv.activity.reginstered.reginstere_fragment.registered.RegisteredActivity;
+import apandatv.app.App;
 import apandatv.base.BaseActivity;
 import apandatv.model.biz.loginandregin.ReginsModelImpl;
 import apandatv.model.entity.LoginBean;
 import apandatv.net.callback.MyNetCallback;
+import apandatv.utils.ACache;
 import apandatv.utils.LogUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -147,7 +149,7 @@ public class LoginActivity extends BaseActivity {
             case R.id.loding_btn:
 
                 phonenumber = editAccount.getText().toString().trim();
-                password = hintAccount.getText().toString().trim();
+                password = editPassword.getText().toString().trim();
 
                 ReginsModelImpl reginsModel = new ReginsModelImpl();
 
@@ -156,6 +158,8 @@ public class LoginActivity extends BaseActivity {
                     public void onSuccess(LoginBean loginBean) {
                         String errMsg = loginBean.getErrMsg();
                         LogUtils.e("TAg","看看登录返回的结果"+errMsg);
+                        ACache aCache = ACache.get(App.context);
+                        aCache.put("loginBean",loginBean);//
 
                         if (errMsg.equals("成功")) {
                             Intent intent1 =new Intent();

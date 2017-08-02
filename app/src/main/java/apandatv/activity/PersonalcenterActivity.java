@@ -8,7 +8,10 @@ import android.widget.TextView;
 
 import com.jiyun.apandatv.R;
 
+import apandatv.app.App;
 import apandatv.base.BaseActivity;
+import apandatv.model.entity.LoginBean;
+import apandatv.utils.ACache;
 import apandatv.ui.module.mine.activity.CollectionActivity;
 import apandatv.ui.module.mine.activity.HistroyActivity;
 import butterknife.BindView;
@@ -19,7 +22,7 @@ import butterknife.OnClick;
  * 个人中心
  */
 
-public class PersonalcenterActivity extends BaseActivity {
+public class PersonalcenterActivity extends BaseActivity implements View.OnClickListener{
 
 //返回按钮
     @BindView(R.id.personal_image)
@@ -70,7 +73,23 @@ public class PersonalcenterActivity extends BaseActivity {
                 break;
 //            跳到登录
             case R.id.linear1:
-                startActivityForResult(new Intent(PersonalcenterActivity.this, LoginActivity.class),0);
+                ACache aCache = ACache.get(App.context);
+                LoginBean loginBean = (LoginBean) aCache.getAsObject("loginBean");
+                if(loginBean == null){
+                    //跳转登录页面
+                    startActivityForResult(new Intent(PersonalcenterActivity.this, LoginActivity.class),0);
+                }else{
+                    //跳转个人信息
+                    Intent intent = new Intent(PersonalcenterActivity.this,PersonalinformationActivity.class);
+                    intent.putExtra("username",dianjilogin.getText().toString());
+                    startActivityForResult(intent,0);
+
+                }
+
+
+
+
+
                 break;
             case R.id.linear2:
                 startActivityForResult(new Intent(PersonalcenterActivity.this, HistroyActivity.class),0);
@@ -107,5 +126,8 @@ public class PersonalcenterActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
 
+    }
 }
