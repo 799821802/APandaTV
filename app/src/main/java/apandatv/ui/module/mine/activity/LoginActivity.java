@@ -1,5 +1,6 @@
 package apandatv.ui.module.mine.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
@@ -9,14 +10,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jiyun.apandatv.R;
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.shareboard.SnsPlatform;
+import com.umeng.socialize.utils.Log;
+import com.umeng.socialize.utils.SocializeUtils;
 
-import apandatv.ui.module.mine.activity.forgetpassword.ForgetPasswordActivity;
-import apandatv.ui.module.mine.activity.reginsterefragment.registered.RegisteredActivity;
+import java.util.ArrayList;
+import java.util.Map;
+
 import apandatv.app.App;
 import apandatv.base.BaseActivity;
 import apandatv.model.biz.loginandregin.ReginsModelImpl;
 import apandatv.model.entity.LoginBean;
 import apandatv.net.callback.MyNetCallback;
+import apandatv.ui.module.mine.activity.forgetpassword.ForgetPasswordActivity;
+import apandatv.ui.module.mine.activity.reginsterefragment.registered.RegisteredActivity;
 import apandatv.utils.ACache;
 import apandatv.utils.LogUtils;
 import butterknife.BindView;
@@ -66,9 +76,9 @@ public class LoginActivity extends BaseActivity {
 
     private String phonenumber;
     private String password;
-//    public ArrayList<SnsPlatform> platforms = new ArrayList<SnsPlatform>();
-//    private SHARE_MEDIA[] list = {SHARE_MEDIA.QQ, SHARE_MEDIA.SINA};
-//    private ProgressDialog dialog;
+    public ArrayList<SnsPlatform> platforms = new ArrayList<SnsPlatform>();
+    private SHARE_MEDIA[] list = {SHARE_MEDIA.QQ, SHARE_MEDIA.SINA};
+    private ProgressDialog dialog;
 
 
     @Override
@@ -78,7 +88,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
-//        initPlatforms();
+        initPlatforms();
     }
 
 
@@ -97,40 +107,40 @@ public class LoginActivity extends BaseActivity {
 
                 break;
             case R.id.llweixinlogin:
-//                UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.SINA, new UMAuthListener() {
-//                    @Override
-//                    public void onStart(SHARE_MEDIA share_media) {
-//                        Log.e("TAG", share_media.toString());
-//                    }
-//
-//                    @Override
-//                    public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
-//                        String uid = map.get("uid");
-//                        String name = map.get("name");
-//                        String gender = map.get("gender");
-//                        String iconurl = map.get("iconurl");
-//                        Log.e("TAG", "uid:" + uid + "," + "name:" + name + "," + "gender:" + gender + "," + "iconurl:" + iconurl);
-//
-//                        Intent intent=new Intent();
-//                        intent.putExtra("name",name);
-//                        setResult(2000,intent);
-//                        finish();
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
-//                        Log.e("TAG", throwable.toString());
-//                    }
-//
-//                    @Override
-//                    public void onCancel(SHARE_MEDIA share_media, int i) {
-//                        Log.e("TAG", "取消分享");
-//                    }
-//                });
+                UMShareAPI.get(this).getPlatformInfo(this, SHARE_MEDIA.SINA, new UMAuthListener() {
+                    @Override
+                    public void onStart(SHARE_MEDIA share_media) {
+                        Log.e("TAG", share_media.toString());
+                    }
+
+                    @Override
+                    public void onComplete(SHARE_MEDIA share_media, int i, Map<String, String> map) {
+                        String uid = map.get("uid");
+                        String name = map.get("name");
+                        String gender = map.get("gender");
+                        String iconurl = map.get("iconurl");
+                        Log.e("TAG", "uid:" + uid + "," + "name:" + name + "," + "gender:" + gender + "," + "iconurl:" + iconurl);
+
+                        Intent intent=new Intent();
+                        intent.putExtra("name",name);
+                        setResult(2000,intent);
+                        finish();
+
+                    }
+
+                    @Override
+                    public void onError(SHARE_MEDIA share_media, int i, Throwable throwable) {
+                        Log.e("TAG", throwable.toString());
+                    }
+
+                    @Override
+                    public void onCancel(SHARE_MEDIA share_media, int i) {
+                        Log.e("TAG", "取消分享");
+                    }
+                });
                 break;
             case R.id.llqqlogin:
-//                UMShareAPI.get(LoginActivity.this).doOauthVerify(LoginActivity.this, platforms.get(0).mPlatform, authListener);
+                UMShareAPI.get(LoginActivity.this).doOauthVerify(LoginActivity.this, platforms.get(0).mPlatform, authListener);
                 break;
             case R.id.llsinalogin:
                 break;
@@ -188,63 +198,63 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-//    UMAuthListener authListener = new UMAuthListener() {
-//        /**
-//         * @desc 授权开始的回调
-//         * @param platform 平台名称
-//         */
-//        @Override
-//        public void onStart(SHARE_MEDIA platform) {
-//            SocializeUtils.safeShowDialog(dialog);
-//        }
-//
-//        /**
-//         * @desc 授权成功的回调
-//         * @param platform 平台名称
-//         * @param action 行为序号，开发者用不上
-//         * @param data 用户资料返回
-//         */
-//        @Override
-//        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-//            SocializeUtils.safeCloseDialog(dialog);
-//            Toast.makeText(LoginActivity.this, "成功了", Toast.LENGTH_LONG).show();
-//        }
-//
-//        /**
-//         * @desc 授权失败的回调
-//         * @param platform 平台名称
-//         * @param action 行为序号，开发者用不上
-//         * @param t 错误原因
-//         */
-//        @Override
-//        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
-//            SocializeUtils.safeCloseDialog(dialog);
-//            Toast.makeText(LoginActivity.this, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
-//        }
-//
-//        /**
-//         * @desc 授权取消的回调
-//         * @param platform 平台名称
-//         * @param action 行为序号，开发者用不上
-//         */
-//        @Override
-//        public void onCancel(SHARE_MEDIA platform, int action) {
-//            SocializeUtils.safeCloseDialog(dialog);
-//            Toast.makeText(LoginActivity.this, "取消了", Toast.LENGTH_LONG).show();
-//        }
-//    };
-//    private void initPlatforms() {
-//        platforms.clear();
-//        for (SHARE_MEDIA e : list) {
-//            if (!e.toString().equals(SHARE_MEDIA.GENERIC.toString())) {
-//                platforms.add(e.toSnsPlatform());
-//            }
-//        }
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
-//    }
+    UMAuthListener authListener = new UMAuthListener() {
+        /**
+         * @desc 授权开始的回调
+         * @param platform 平台名称
+         */
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            SocializeUtils.safeShowDialog(dialog);
+        }
+
+        /**
+         * @desc 授权成功的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         * @param data 用户资料返回
+         */
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(LoginActivity.this, "成功了", Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @desc 授权失败的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         * @param t 错误原因
+         */
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(LoginActivity.this, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @desc 授权取消的回调
+         * @param platform 平台名称
+         * @param action 行为序号，开发者用不上
+         */
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            SocializeUtils.safeCloseDialog(dialog);
+            Toast.makeText(LoginActivity.this, "取消了", Toast.LENGTH_LONG).show();
+        }
+    };
+    private void initPlatforms() {
+        platforms.clear();
+        for (SHARE_MEDIA e : list) {
+            if (!e.toString().equals(SHARE_MEDIA.GENERIC.toString())) {
+                platforms.add(e.toSnsPlatform());
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
 }

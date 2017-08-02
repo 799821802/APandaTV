@@ -12,7 +12,6 @@ import com.jiyun.apandatv.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import apandatv.activity.WebActivity;
 import apandatv.base.BaseFragment;
 import apandatv.config.Keys;
 import apandatv.model.db.dbhistroy.DaoMaster;
@@ -25,6 +24,7 @@ import apandatv.model.entity.HomePandaeyeBean;
 import apandatv.model.entity.PandaHome;
 import apandatv.ui.module.home.adapter.HomeAdapter;
 import apandatv.ui.module.interactive.InteractiveActivity;
+import apandatv.ui.module.mine.activity.WebActivity;
 import apandatv.ui.module.playvideo.VideoplayerActivity;
 import apandatv.utils.LogUtils;
 import apandatv.widget.manager.ToastManager;
