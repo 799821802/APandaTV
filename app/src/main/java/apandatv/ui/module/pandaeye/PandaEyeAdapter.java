@@ -33,8 +33,6 @@ public class PandaEyeAdapter extends RecyclerView.Adapter {
         this.pandaEyeOnclick=pandaEyeOnclick;
     }
 
-
-
     FragmentActivity activity;
     ArrayList<PandaEyeXre.ListBean> arrayList;
     public PandaEyeAdapter(FragmentActivity activity, ArrayList<PandaEyeXre.ListBean> arrayList) {
