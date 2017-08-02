@@ -12,7 +12,6 @@ import com.jiyun.apandatv.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import apandatv.ui.module.playvideo.VideoplayerActivity;
 import apandatv.activity.WebActivity;
 import apandatv.base.BaseFragment;
 import apandatv.config.Keys;
@@ -26,6 +25,7 @@ import apandatv.model.entity.HomePandaeyeBean;
 import apandatv.model.entity.PandaHome;
 import apandatv.ui.module.home.adapter.HomeAdapter;
 import apandatv.ui.module.interactive.InteractiveActivity;
+import apandatv.ui.module.playvideo.VideoplayerActivity;
 import apandatv.utils.LogUtils;
 import apandatv.widget.manager.ToastManager;
 import apandatv.widget.view.CustomDialog;
@@ -120,9 +120,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
                 String img = bigImgs.get(position).getImage();
                 String title = bigImgs.get(position).getTitle();
                 String time = bigImgs.get(position).getOrder();
+                LogUtils.e("TAG","======="+pid+img+title+time);
                 insertGreendao(new MyHistroy(null,img,title,time,pid));
-                Intent intent = new Intent(getContext(),VideoplayerActivity.class);
-                startActivity(intent);
+                if(!"".equals(bigImgs.get(position).getPid())){
+                    Intent intent = new Intent(getContext(),VideoplayerActivity.class);
+                    intent.putExtra(Keys.VIDEO_IMG,img);
+                    intent.putExtra(Keys.VIDEO_PID,pid);
+                    intent.putExtra(Keys.VIDEO_TITLE,title);
+                    startActivity(intent);
+                }
+
             }
 
 
@@ -201,11 +208,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
                 String title = listBean.getTitle();
                 String time =listBean.getOrder();
                 insertGreendao(new MyHistroy(null,img,title,time,pid));
-                Intent intent = new Intent(getContext(), VideoplayerActivity.class);
-                intent.putExtra(Keys.VIDEO_IMG,img);
-                intent.putExtra(Keys.VIDEO_PID,pid);
-                intent.putExtra(Keys.VIDEO_TITLE,title);
-                startActivity(intent);
+//                Intent intent = new Intent(getContext(), VideoplayerActivity.class);
+//                intent.putExtra(Keys.VIDEO_IMG,img);
+//                intent.putExtra(Keys.VIDEO_PID,pid);
+//                intent.putExtra(Keys.VIDEO_TITLE,title);
+//                startActivity(intent);
             }
 
             @Override

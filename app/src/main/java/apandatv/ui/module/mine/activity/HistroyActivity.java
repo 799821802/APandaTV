@@ -33,6 +33,7 @@ import static com.jiyun.apandatv.R.id.all_button;
 
 /**
  * Created by lenovo on 2017/8/1.
+ * 历史记录
  */
 
 public class HistroyActivity extends BaseActivity {

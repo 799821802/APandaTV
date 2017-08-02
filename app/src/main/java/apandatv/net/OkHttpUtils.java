@@ -252,7 +252,7 @@ public void getImage(String url, Callback callback ){
 
 
     }
-
+//下载文件
     @Override
     public File download(String uri,ProgressDialog pd) throws Exception{
 

@@ -9,6 +9,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -49,7 +50,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.8.0'
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.androidkun:pulltorefreshrecyclerview:1.0.6'
-    compile project(':mylibrary')
     compile 'de.greenrobot:greendao:2.1.0'
     compile 'de.greenrobot:greendao-generator:2.1.0'
     compile project(':jcvideoplayer-libs')

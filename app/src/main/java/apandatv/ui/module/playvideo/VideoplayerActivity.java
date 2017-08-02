@@ -7,11 +7,9 @@ import android.view.GestureDetector;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jiyun.apandatv.R;
-import com.umeng.socialize.UMShareAPI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +25,8 @@ import apandatv.widget.manager.ToastManager;
 import apandatv.widget.view.CustomDialog;
 import butterknife.BindView;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
+
+//import com.umeng.socialize.UMShareAPI;
 
 //import com.umeng.socialize.ShareAction;
 //import com.umeng.socialize.UMShareAPI;
@@ -109,16 +109,15 @@ public class VideoplayerActivity extends BaseActivity implements VideoPlayContra
 
             @Override
             public void CollectionMonitor(CompoundButton compoundButton, boolean b) {
-                boolean checked = compoundButton.isChecked();
+                boolean checked =  compoundButton.isChecked();
 
                 if(checked == true) {
 
-                    Toast.makeText(VideoplayerActivity.this, "已添加至收藏", Toast.LENGTH_SHORT).show();
+                    ToastManager.show("已添加至收藏");
                     insertGreendao(new MyCollection(null,img,video_title,"",pid));
 
-
                 }else{
-                    Toast.makeText(VideoplayerActivity.this, "已取消至收藏", Toast.LENGTH_SHORT).show();
+                    ToastManager.show("已取消至收藏");
                     deleteGreendao(new MyCollection(null,img,video_title,"",pid));
                 }
 
@@ -254,7 +253,7 @@ public class VideoplayerActivity extends BaseActivity implements VideoPlayContra
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        UMShareAPI.get(VideoplayerActivity.this).onActivityResult(requestCode, resultCode, data);
+//        UMShareAPI.get(VideoplayerActivity.this).onActivityResult(requestCode, resultCode, data);
 
     }
 }

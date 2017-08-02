@@ -33,6 +33,7 @@ import static com.jiyun.apandatv.R.id.collection_bianji;
 
 /**
  * Created by lenovo on 2017/8/1.
+ * 收藏
  */
 
 public class CollectionActivity extends BaseActivity {
@@ -169,6 +170,9 @@ public class CollectionActivity extends BaseActivity {
     }
 
     private void bianji() {
+
+        collectionLiveImg.setVisibility(View.GONE);
+        collectionWhatRecycler.setVisibility(View.VISIBLE);
         if (collectionBianji.getText().equals("编辑")) {
             collectionBianji.setText("取消");
             allDeleteLinear.setVisibility(View.VISIBLE);
