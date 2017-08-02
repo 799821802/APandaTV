@@ -12,6 +12,25 @@ public class MyCollection {
     private String data;
     private String moviepath;
 
+    private boolean flg_bulen;
+    private boolean flg;
+
+    public boolean isFlg() {
+        return flg;
+    }
+
+    public void setFlg(boolean flg) {
+        this.flg = flg;
+    }
+
+    public boolean isFlg_bulen() {
+        return flg_bulen;
+    }
+
+    public void setFlg_bulen(boolean flg_bulen) {
+        this.flg_bulen = flg_bulen;
+    }
+
     public MyCollection() {
     }
 

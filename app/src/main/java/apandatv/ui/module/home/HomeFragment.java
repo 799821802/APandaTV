@@ -1,5 +1,6 @@
 package apandatv.ui.module.home;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -10,14 +11,22 @@ import com.jiyun.apandatv.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import apandatv.activity.VideoplayerActivity;
+import apandatv.activity.WebActivity;
 import apandatv.base.BaseFragment;
+import apandatv.config.Keys;
 import apandatv.model.db.dbhistroy.DaoMaster;
 import apandatv.model.db.dbhistroy.DaoSession;
 import apandatv.model.db.dbhistroy.MyHistroy;
 import apandatv.model.db.dbhistroy.MyHistroyDao;
+import apandatv.model.entity.HomeCctvBean;
+import apandatv.model.entity.HomeGuangChinaBean;
+import apandatv.model.entity.HomePandaeyeBean;
 import apandatv.model.entity.PandaHome;
 import apandatv.ui.module.home.adapter.HomeAdapter;
+import apandatv.ui.module.interactive.InteractiveActivity;
 import apandatv.utils.LogUtils;
+import apandatv.widget.manager.ToastManager;
 import apandatv.widget.view.CustomDialog;
 import butterknife.BindView;
 
@@ -94,6 +103,122 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
         lists.add(pandaHome.getData().getList().get(0));
         homeAdapter.notifyDataSetChanged();
         homeXrecyclerview.refreshComplete();
+
+        setOnListener();
+    }
+
+    private void setOnListener() {
+
+        homeAdapter.setOnIntemListener(new HomeAdapter.OnXRecyClickListener() {
+
+            @Override
+            public void getOnRatatiClick(int position, List<PandaHome.DataBean.BigImgBean> bigImgs) {
+
+                String pid = bigImgs.get(position).getPid();
+                String img = bigImgs.get(position).getImage();
+                String title = bigImgs.get(position).getTitle();
+                String time = bigImgs.get(position).getOrder();
+                insertGreendao(new MyHistroy(null,img,title,time,pid));
+                Intent intent = new Intent(getContext(),VideoplayerActivity.class);
+                startActivity(intent);
+            }
+
+
+            @Override
+            public void getOnwonderfulClick(PandaHome.DataBean.AreaBean.ListscrollBean home_data) {
+                ToastManager.show("2");
+
+                insertGreendao(new MyHistroy(null,home_data.getImage(),home_data.getTitle(),home_data.getOrder(),home_data.getPid()));
+                Intent intent = new Intent(getContext(), VideoplayerActivity.class);
+                intent.putExtra(Keys.VIDEO_IMG,home_data.getImage());
+                intent.putExtra(Keys.VIDEO_PID,home_data.getVid());
+                intent.putExtra(Keys.VIDEO_TITLE,home_data.getTitle());
+
+                startActivity(intent);
+            }
+
+            @Override
+            public void getOnpandaneyeClick(View look_view, PandaHome.DataBean.PandaeyeBean.ItemsBean itemsBean) {
+                ToastManager.show("3");
+
+                Intent intent = new Intent(getContext(), WebActivity.class);
+                intent.putExtra(Keys.WEBKEY,itemsBean.getUrl());
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void getOnPandaneyesecondClick(View look_view, PandaHome.DataBean.PandaeyeBean.ItemsBean second_itemsBean) {
+                ToastManager.show("4");
+                Intent intent = new Intent(getContext(), WebActivity.class);
+                intent.putExtra(Keys.WEBKEY,second_itemsBean.getUrl());
+                startActivity(intent);
+            }
+
+            @Override
+            public void getOnPandaneyedownClick(HomePandaeyeBean.ListBean look_down_text) {
+                ToastManager.show("5");
+                String pid = look_down_text.getPid();
+                String img = look_down_text.getImage();
+                String title = look_down_text.getTitle();
+                String time =look_down_text.getOrder();
+                insertGreendao(new MyHistroy(null,img,title,time,pid));
+                Intent intent = new Intent(getContext(), VideoplayerActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void getOnPandaliveClick(PandaHome.DataBean.PandaliveBean.ListBean pandalivebean) {
+//                ToastManager.show("6");
+            }
+
+            @Override
+            public void getOnWallliveClick(PandaHome.DataBean.WallliveBean.ListBeanX listBeanX) {
+//                ToastManager.show("7");
+            }
+
+            @Override
+            public void getOnchinaliveClick(PandaHome.DataBean.ChinaliveBean.ListBeanXX listBeanXX) {
+//                ToastManager.show("8");
+            }
+
+            @Override
+            public void getSpecialPlanningClick(View v, PandaHome.DataBean.InteractiveBean.InteractiveoneBean interactiveoneBean) {
+                ToastManager.show("原创互动");
+                startActivity(new Intent(getContext(), InteractiveActivity.class));
+            }
+
+            @Override
+            public void getOnCctvLiveClick(HomeCctvBean.ListBean listBean) {
+                ToastManager.show("cctv");
+                String pid = listBean.getPid();
+                String img = listBean.getImage();
+                String title = listBean.getTitle();
+                String time =listBean.getOrder();
+                insertGreendao(new MyHistroy(null,img,title,time,pid));
+                Intent intent = new Intent(getContext(), VideoplayerActivity.class);
+                intent.putExtra(Keys.VIDEO_IMG,img);
+                intent.putExtra(Keys.VIDEO_PID,pid);
+                intent.putExtra(Keys.VIDEO_TITLE,title);
+                startActivity(intent);
+            }
+
+            @Override
+            public void getOnGongyingClick(HomeGuangChinaBean.ListBean listBean) {
+                ToastManager.show("光影中国");
+
+                String pid = listBean.getPid();
+                String img = listBean.getImage();
+                String title = listBean.getTitle();
+                String time =listBean.getOrder();
+                insertGreendao(new MyHistroy(null,img,title,time,pid));
+                Intent intent = new Intent(getContext(), VideoplayerActivity.class);
+                intent.putExtra(Keys.VIDEO_IMG,img);
+                intent.putExtra(Keys.VIDEO_PID,pid);
+                intent.putExtra(Keys.VIDEO_TITLE,title);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -103,6 +228,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
 
     @Override
     public void playVideo() {
+
 
     }
 
@@ -157,4 +283,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
     public void onLoadMore() {
 
     }
+
+
+
 }

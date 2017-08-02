@@ -8,5 +8,8 @@ package apandatv.config;
 public class Keys {
 
     public static final String WEBKEY = "url";
+    public static final String VIDEO_IMG = "img";
+    public static final String VIDEO_TITLE = "title";
+    public static final String VIDEO_PID = "pid";
 
 }

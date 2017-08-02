@@ -74,12 +74,12 @@ public class HistroyActivity extends BaseActivity {
     @Override
     protected void init() {
 
-//        greedao = getGreendao();
-//        list = greedao.queryBuilder().list();
-//        his_list.addAll(list);
+        greedao = getGreendao();
+        list = greedao.queryBuilder().list();
+        his_list.addAll(list);
 
-        MyHistroy myHistroy = new MyHistroy(100l,"","熊猫宝宝首次独立度夏 靠冰块消暑","2017-07-24 10:00","");
-        his_list.add(myHistroy);
+//        MyHistroy myHistroy = new MyHistroy(100l,"","熊猫宝宝首次独立度夏 靠冰块消暑","2017-07-24 10:00","");
+//        his_list.add(myHistroy);
         historicalRecycler.setLayoutManager(new LinearLayoutManager(App.context));
         h_adapter = new HistoricalAdapter(App.context, his_list);
         historicalRecycler.setAdapter(h_adapter);
@@ -144,7 +144,7 @@ public class HistroyActivity extends BaseActivity {
             for (int i = his_list.size() - 1; i >= 0; i--) {
                 if (his_list.get(i).isFlg_bulen()) {
 
-//                    greedao.delete(his_list.get(i));
+                    greedao.delete(his_list.get(i));
                     his_list.remove(i);
                 }
             }

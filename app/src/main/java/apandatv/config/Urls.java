@@ -43,4 +43,6 @@ public static final String PANDAEYEXrecy = "http://api.cntv.cn/apicommon/index?p
     public static final String LIVECHINA = BASEURL + "PAGE14501775094142282/index.json";
     //原创互动
     public static final String INTERACTIVE = BASEURL + "PAGE14501767715521482/index.json";
+    //视频播放
+    public static final String TV_Url = "http://115.182.9.189/api/getVideoInfoForCBox.do?pid=";
 }

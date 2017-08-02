@@ -21,6 +21,19 @@ import apandatv.net.HttpFactroy;
 
 public class HomeGuangChinaAdapter extends RecyclerView.Adapter {
 
+
+
+    public interface Movie_live_Onclick{
+        void  get_movie_live(View view,int movie_postion);
+    }
+    private Movie_live_Onclick movie_live_onclick;
+
+    public void set_China_movie_click(Movie_live_Onclick movie_live_onclick){
+        this.movie_live_onclick=movie_live_onclick;
+    }
+
+
+
     private Context context;
     private List<HomeGuangChinaBean.ListBean> listbean;
 
@@ -67,6 +80,13 @@ public class HomeGuangChinaAdapter extends RecyclerView.Adapter {
             title = (TextView) itemView.findViewById(R.id.look_down_title);
             data = (TextView) itemView.findViewById(R.id.look_down_data);
             time = (TextView) itemView.findViewById(R.id.movie_time);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    movie_live_onclick.get_movie_live(v,getAdapterPosition());
+                }
+            });
 
 
         }
