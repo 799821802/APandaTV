@@ -20,6 +20,7 @@ import com.umeng.socialize.utils.SocializeUtils;
 import java.util.ArrayList;
 import java.util.Map;
 
+import apandatv.activity.forgetpassword.ForgetPasswordActivity;
 import apandatv.activity.reginstered.reginstere_fragment.registered.RegisteredActivity;
 import apandatv.app.App;
 import apandatv.base.BaseActivity;
@@ -144,7 +145,11 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.hint_password:
                 break;
+//            忘记密码
             case R.id.personal_login_forget_pwd:
+                Intent intent1 = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+            startActivity(intent1);
+
                 break;
             case R.id.loding_btn:
 
