@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import apandatv.base.BaseFragment;
 import apandatv.model.entity.PandaLiveTextBean;
 import apandatv.ui.module.pandalive.pandaliveadapter.PandaLiveTablayadapter;
+import apandatv.widget.view.CustomDialog;
 import apandatv.widget.view.MyViewViewPage;
 import butterknife.BindView;
 import butterknife.Unbinder;
@@ -59,12 +60,13 @@ public class PandaLiveFragment extends BaseFragment implements PandaLiveContrrat
 
     @Override
     public void showProgress() {
+        CustomDialog.getInsent().show(getContext());
 
     }
 
     @Override
     public void dimissProgress() {
-
+        CustomDialog.getInsent().dismiss();
     }
 
     @Override

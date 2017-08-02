@@ -34,7 +34,10 @@ public class PandaLiveOtherPresenter implements PandaLiveOtherContract.Presenter
         pandaLiveModel.getOtherLive(url, new MyNetCallback<PandaLiveOther>() {
             @Override
             public void onSuccess(PandaLiveOther pandaLiveLook) {
-                pandaliveview.getData(pandaLiveLook);
+                    pandaliveview.getData(pandaLiveLook);
+
+
+
             }
 
             @Override

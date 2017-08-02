@@ -145,11 +145,12 @@
                 android:id="@+id/edit_account"
                 android:layout_width="match_parent"
                 android:layout_height="132px"
+
                 android:hint="@string/login_account_hint"
                 android:padding="5dp"
                 android:textSize="14sp"
                 android:textColorHint="#c9c9c9"
-                android:textColor="@color/radio_hui"
+                android:textColor="#000"
                 android:textCursorDrawable="@null" />
 
 
@@ -180,7 +181,7 @@
                 android:textColorHint="#c9c9c9"
                 android:password="true"
                 android:textSize="14sp"
-                android:textColor="@color/radio_hui"
+                android:textColor="#000"
                 android:textCursorDrawable="@null" />
 
 

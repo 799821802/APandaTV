@@ -1,4 +1,8 @@
-package apandatv.activity.reginstered;
+package apandatv.activity.reginstered.reginstere_fragment.registered;
+
+import android.support.v4.app.Fragment;
+
+import java.util.ArrayList;
 
 import apandatv.base.BasePresenter;
 import apandatv.base.BaseView;
@@ -12,9 +16,9 @@ public class RegistereContart {
     interface View extends BaseView<Presenter> {
 
     }
-
+//
     interface Presenter extends BasePresenter {
-
+    ArrayList<Fragment> getFragment();
 
     }
 

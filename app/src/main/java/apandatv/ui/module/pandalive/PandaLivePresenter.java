@@ -37,15 +37,18 @@ public class PandaLivePresenter implements PandaLiveContrrat.Presenter {
     @Override
     public void start() {
 
+
+        pandaliveview.showProgress();
         pandaLiveModel.getPandaLive(new MyNetCallback<PandaLiveTextBean>() {
             @Override
             public void onSuccess(PandaLiveTextBean pandaLiveTextBean) {
                 pandaliveview.getData(pandaLiveTextBean);
+                pandaliveview.dimissProgress();
             }
 
             @Override
             public void onError(int errorCode, String errorMsg) {
-
+                pandaliveview.dimissProgress();
             }
         });
 

@@ -26,11 +26,13 @@ public class PandaEyePresenter implements PandaEyeContrat.Presenter {
     @Override
     public void start() {
 
+        view.showProgress();
         pandaEyeModel.getPandaEye(new MyNetCallback<PandaEye>() {
             @Override
             public void onSuccess(PandaEye pandaEye) {
 
                 view.getData(pandaEye);
+                view.dimissProgress();
             }
 
             @Override

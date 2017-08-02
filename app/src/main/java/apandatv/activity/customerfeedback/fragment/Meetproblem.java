@@ -1,14 +1,15 @@
-package apandatv.activity.reginstered.reginstere_fragment.phone;
+package apandatv.activity.customerfeedback.fragment;
 
 import android.view.View;
 
 import apandatv.base.BaseFragment;
 
 /**
- * Created by Administrator on 2017/8/1.
+ * Created by Administrator on 2017/8/2.
+ * 遇见的问题
  */
 
-public class PhoneRegistrationActivity extends BaseFragment{
+public class Meetproblem extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return 0;

@@ -21,6 +21,18 @@ import apandatv.model.entity.PandaLiveMore;
  */
 
 public class MoreLookAdapter extends RecyclerView.Adapter {
+ private    MoreLookOnclick moreLookOnclick;
+
+    public interface MoreLookOnclick {
+        void getMoreLookOnclick(View view,int postion);
+    }
+
+
+    public void setMoreLookOnclick( MoreLookOnclick moreLookOnclick){
+        this.moreLookOnclick=moreLookOnclick;
+    }
+
+
     FragmentActivity activity;
     List<PandaLiveMore.ListBean> list;
     public MoreLookAdapter(FragmentActivity activity, List<PandaLiveMore.ListBean> list) {
@@ -38,12 +50,19 @@ public class MoreLookAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         My_View my_view = (My_View) holder;
 
         my_view.textView.setText(list.get(position).getTitle());
         Glide.with(activity).load(list.get(position).getImage()).into(my_view.imageView);
 
+
+        my_view.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moreLookOnclick.getMoreLookOnclick(v,position);
+            }
+        });
 
     }
 

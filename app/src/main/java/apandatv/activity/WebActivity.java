@@ -6,7 +6,6 @@ import android.webkit.WebView;
 import com.jiyun.apandatv.R;
 
 import apandatv.base.BaseActivity;
-import apandatv.config.Keys;
 import apandatv.widget.cache.ACache;
 import butterknife.BindView;
 
@@ -30,9 +29,10 @@ public class WebActivity extends BaseActivity {
         if(stringurl == null){
 
 
-            stringurl = getIntent().getStringExtra(Keys.WEBKEY);
+//            stringurl = getIntent().getStringExtra(Keys.WEBKEY);
 
         }else{
+
 
             ACache aCache = ACache.get(this);
             stringurl = aCache.getAsString("cache_url");

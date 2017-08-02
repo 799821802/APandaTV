@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -17,6 +18,7 @@ import apandatv.app.App;
 import apandatv.base.BaseFragment;
 import apandatv.model.entity.PandaEye;
 import apandatv.model.entity.PandaEyeXre;
+import apandatv.widget.view.CustomDialog;
 import butterknife.BindView;
 import butterknife.Unbinder;
 
@@ -65,6 +67,16 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContrat.Vi
 
         xrecyclePandeeyae.setAdapter(pandaEyeAdapter);
 
+        pandaEyeAdapter.setPandaEyeOnclick(new PandaEyeAdapter.PandaEyeOnclick() {
+            @Override
+            public void getPandaOnclick(View view, int postion) {
+
+                Toast.makeText(getContext(),  arrayList.get(postion).getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
     }
 
@@ -79,11 +91,13 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContrat.Vi
     @Override
     public void showProgress() {
 
+        CustomDialog.getInsent().show(getContext());
+
     }
 
     @Override
     public void dimissProgress() {
-
+        CustomDialog.getInsent().dismiss();
     }
 
     @Override
@@ -92,13 +106,19 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContrat.Vi
     }
 
     @Override
-    public void getData(PandaEye pandaEye) {
+    public void getData(final PandaEye pandaEye) {
 
         Glide.with(App.context).load(pandaEye.getData().getBigImg().get(0).getImage()).into(pandaBroadcastTopviewImg);
 
         pandaBroadcastTopviewTitle.setText(pandaEye.getData().getBigImg().get(0).getTitle());
 
+        pandaBroadcastTopviewImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), pandaEye.getData().getBigImg().get(0).getTitle(), Toast.LENGTH_SHORT).show();
 
+            }
+        });
 
     }
 
@@ -112,6 +132,5 @@ public class PandaEyeFragment extends BaseFragment implements PandaEyeContrat.Vi
         pandaEyeAdapter.notifyDataSetChanged();
 
     }
-
 
 }

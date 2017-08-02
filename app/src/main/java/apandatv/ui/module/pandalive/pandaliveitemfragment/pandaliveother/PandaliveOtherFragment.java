@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.jiyun.apandatv.R;
@@ -16,6 +17,7 @@ import apandatv.base.BaseFragment;
 import apandatv.config.Urls;
 import apandatv.model.entity.PandaLiveOther;
 import apandatv.utils.LogUtils;
+import apandatv.widget.view.CustomDialog;
 import butterknife.BindView;
 
 /**
@@ -91,6 +93,14 @@ public class PandaliveOtherFragment extends BaseFragment implements PandaLiveOth
             }
         });
 
+        pandaOtherAdapter.setPandaOthierOnclik(new PandaOtherAdapter.PandaOthierOnclik() {
+            @Override
+            public void getpandaOther(View view, int postion) {
+                Toast.makeText(getContext(), video.get(postion).getT(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
     @Override
@@ -112,10 +122,14 @@ public class PandaliveOtherFragment extends BaseFragment implements PandaLiveOth
 
     @Override
     public void showProgress() {
+        CustomDialog.getInsent().show(getContext());
+
     }
 
     @Override
     public void dimissProgress() {
+        CustomDialog.getInsent().dismiss();
+
     }
 
 

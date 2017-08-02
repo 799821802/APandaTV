@@ -72,6 +72,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.View, XRe
     public void showProgress() {
 
         CustomDialog.getInsent().show(getContext());
+
     }
 
     @Override

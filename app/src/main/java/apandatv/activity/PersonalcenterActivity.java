@@ -9,8 +9,6 @@ import android.widget.TextView;
 import com.jiyun.apandatv.R;
 
 import apandatv.base.BaseActivity;
-import apandatv.ui.module.mine.activity.CollectionActivity;
-import apandatv.ui.module.mine.activity.HistroyActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -59,24 +57,52 @@ public class PersonalcenterActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.personal_image:
+
+                PersonalcenterActivity.this.finish();
+
                 break;
             case R.id.user_headimg:
                 break;
             case R.id.dianjilogin:
-                break;
-            case R.id.linear1:
-                Intent intent = new Intent(PersonalcenterActivity.this,LoginActivity.class);
-                startActivity(intent);
 
                 break;
+//            跳到登录
+            case R.id.linear1:
+                startActivityForResult(new Intent(PersonalcenterActivity.this, LoginActivity.class),0);
+                break;
             case R.id.linear2:
-                startActivity(new Intent(this, HistroyActivity.class));
+
                 break;
             case R.id.linear3:
-                startActivity(new Intent(this, CollectionActivity.class));
                 break;
             case R.id.linear4:
+                Intent intent = new Intent(PersonalcenterActivity.this,SetupActivity.class);
+                startActivity(intent);
+
+
                 break;
         }
     }
+
+//    跳转回传
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case 1000:
+                String result_value = data.getStringExtra("userid");
+                dianjilogin.setText("央视网友"+result_value);
+                break;
+            case 2000:
+                String name = data.getStringExtra("name");
+                dianjilogin.setText(name);
+                break;
+            case 3000:
+                dianjilogin.setText("点击登录");
+                break;
+        }
+    }
+
+
+
 }

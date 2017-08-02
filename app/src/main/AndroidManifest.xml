@@ -35,6 +35,15 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"/>
 
+        <activity android:name="apandatv.activity.reginstered.reginstere_fragment.registered.RegisteredActivity" />
+        <activity android:name="apandatv.activity.LoginActivity"></activity>
+        <activity android:name="apandatv.activity.PersonalcenterActivity"></activity>
+        <activity android:name="apandatv.activity.SetupActivity"></activity>
+        <activity android:name="apandatv.activity.PersonAboutActivity"></activity>
+
+
+
+
     </application>
 
 </manifest>

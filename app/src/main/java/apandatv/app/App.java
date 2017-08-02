@@ -6,6 +6,7 @@ import com.umeng.socialize.PlatformConfig;
 
 import apandatv.base.BaseActivity;
 
+
 /**
  * Created by lenovo on 2017/7/27.
  */
@@ -22,7 +23,6 @@ public class App extends Application {
 //        CrashHandler.getInstance().init(this);//初始化全局异常管理
     }
     {
-
         PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
         PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
         PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad", "http://sns.whalecloud.com");
