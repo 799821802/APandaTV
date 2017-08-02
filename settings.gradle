@@ -1,2 +1,2 @@
-include ':app', ':mylibrary', ':jcvideoplayer-libs'
+include ':app', ':mylibrary', ':jcvideoplayer-libs', ':PushSDK'
 
